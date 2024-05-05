@@ -63,6 +63,16 @@ namespace GradingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ảnh_chụp_màn_hình_2024_05_05_083823 {
+            get {
+                object obj = ResourceManager.GetObject("Ảnh chụp màn hình 2024-05-05 083823", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap back__1_ {
             get {
                 object obj = ResourceManager.GetObject("back (1)", resourceCulture);

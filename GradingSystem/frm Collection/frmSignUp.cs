@@ -71,5 +71,25 @@ namespace GradingSystem.frm_Collection
         {
             drag = false;
         }
+
+        private void BackLbl_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new();
+            loginForm.ShowDialog();
+            this.Close();
+        }
+
+        private void SignUpBtn_Click(object sender, EventArgs e)
+        {
+            string Firstname = FirstnameTxt.Text.Trim();
+            string Lastname = LastnameTxt.Text.Trim();
+            string username = UsernameTxt.Text;
+            string password = PasswordTxt.Text;
+            string confirm_password = CpwTxt.Text;
+            string email = EmailTxt.Text;
+
+
+        }
     }
 }
