@@ -28,29 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Panel1 = new Panel();
+            MovementPanel = new Panel();
             Exit = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            CpwTxt = new TextBox();
             FirstnameTxt = new TextBox();
-            EmailTxt = new TextBox();
             SignUpBtn = new Button();
-            PasswordTxt = new TextBox();
-            UsernameTxt = new TextBox();
             lblSIGNIN = new Label();
-            BirthdayLbl = new Label();
             BackLbl = new Label();
             LastnameTxt = new TextBox();
+            UsernameTxt = new TextBox();
+            PasswordTxt = new TextBox();
+            EmailTxt = new TextBox();
+            CpwTxt = new TextBox();
             SuspendLayout();
             // 
-            // Panel1
+            // MovementPanel
             // 
-            Panel1.BackColor = Color.White;
-            Panel1.Location = new Point(-1, -1);
-            Panel1.Margin = new Padding(4, 3, 4, 3);
-            Panel1.Name = "Panel1";
-            Panel1.Size = new Size(362, 36);
-            Panel1.TabIndex = 28;
+            MovementPanel.BackColor = Color.White;
+            MovementPanel.Location = new Point(-1, 0);
+            MovementPanel.Margin = new Padding(4, 3, 4, 3);
+            MovementPanel.Name = "MovementPanel";
+            MovementPanel.Size = new Size(362, 36);
+            MovementPanel.TabIndex = 28;
+            MovementPanel.MouseDown += MovementPanel_MouseDown;
+            MovementPanel.MouseMove += MovementPanel_MouseMove;
+            MovementPanel.MouseUp += MovementPanel_MouseUp;
             // 
             // Exit
             // 
@@ -65,25 +66,6 @@
             Exit.TabIndex = 26;
             Exit.Text = "X";
             // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Font = new Font("Bookman Old Style", 10.8F);
-            dateTimePicker1.Location = new Point(37, 225);
-            dateTimePicker1.Margin = new Padding(4, 3, 4, 3);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(331, 29);
-            dateTimePicker1.TabIndex = 37;
-            // 
-            // CpwTxt
-            // 
-            CpwTxt.Font = new Font("Bookman Old Style", 10.8F);
-            CpwTxt.Location = new Point(37, 435);
-            CpwTxt.Margin = new Padding(4, 3, 4, 3);
-            CpwTxt.Name = "CpwTxt";
-            CpwTxt.PlaceholderText = "Confirm password";
-            CpwTxt.Size = new Size(331, 29);
-            CpwTxt.TabIndex = 36;
-            // 
             // FirstnameTxt
             // 
             FirstnameTxt.Font = new Font("Bookman Old Style", 10.8F);
@@ -94,16 +76,6 @@
             FirstnameTxt.Size = new Size(136, 29);
             FirstnameTxt.TabIndex = 35;
             // 
-            // EmailTxt
-            // 
-            EmailTxt.Font = new Font("Bookman Old Style", 10.8F);
-            EmailTxt.Location = new Point(37, 510);
-            EmailTxt.Margin = new Padding(5, 3, 5, 3);
-            EmailTxt.Name = "EmailTxt";
-            EmailTxt.PlaceholderText = "Email";
-            EmailTxt.Size = new Size(331, 29);
-            EmailTxt.TabIndex = 34;
-            // 
             // SignUpBtn
             // 
             SignUpBtn.BackColor = Color.White;
@@ -111,35 +83,14 @@
             SignUpBtn.FlatStyle = FlatStyle.Flat;
             SignUpBtn.Font = new Font("Bookman Old Style", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SignUpBtn.ForeColor = Color.FromArgb(37, 46, 255);
-            SignUpBtn.Location = new Point(132, 573);
+            SignUpBtn.Location = new Point(113, 438);
             SignUpBtn.Margin = new Padding(5, 3, 5, 3);
             SignUpBtn.Name = "SignUpBtn";
-            SignUpBtn.Size = new Size(135, 35);
+            SignUpBtn.Size = new Size(178, 35);
             SignUpBtn.TabIndex = 32;
             SignUpBtn.Text = "SIGN UP";
             SignUpBtn.UseVisualStyleBackColor = false;
             SignUpBtn.Click += SignUpBtn_Click;
-            // 
-            // PasswordTxt
-            // 
-            PasswordTxt.Font = new Font("Bookman Old Style", 10.8F);
-            PasswordTxt.Location = new Point(37, 363);
-            PasswordTxt.Margin = new Padding(5, 3, 5, 3);
-            PasswordTxt.Name = "PasswordTxt";
-            PasswordTxt.PasswordChar = '*';
-            PasswordTxt.PlaceholderText = "Password";
-            PasswordTxt.Size = new Size(331, 29);
-            PasswordTxt.TabIndex = 31;
-            // 
-            // UsernameTxt
-            // 
-            UsernameTxt.Font = new Font("Bookman Old Style", 10.8F);
-            UsernameTxt.Location = new Point(37, 292);
-            UsernameTxt.Margin = new Padding(5, 3, 5, 3);
-            UsernameTxt.Name = "UsernameTxt";
-            UsernameTxt.PlaceholderText = "Username";
-            UsernameTxt.Size = new Size(331, 29);
-            UsernameTxt.TabIndex = 30;
             // 
             // lblSIGNIN
             // 
@@ -153,24 +104,12 @@
             lblSIGNIN.TabIndex = 29;
             lblSIGNIN.Text = "SIGN UP";
             // 
-            // BirthdayLbl
-            // 
-            BirthdayLbl.AutoSize = true;
-            BirthdayLbl.Font = new Font("Bookman Old Style", 10.8F);
-            BirthdayLbl.ForeColor = SystemColors.ControlDarkDark;
-            BirthdayLbl.Location = new Point(37, 202);
-            BirthdayLbl.Margin = new Padding(4, 0, 4, 0);
-            BirthdayLbl.Name = "BirthdayLbl";
-            BirthdayLbl.Size = new Size(85, 20);
-            BirthdayLbl.TabIndex = 38;
-            BirthdayLbl.Text = "Birthday";
-            // 
             // BackLbl
             // 
             BackLbl.AutoSize = true;
             BackLbl.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BackLbl.ForeColor = Color.DarkGray;
-            BackLbl.Location = new Point(132, 666);
+            BackLbl.Location = new Point(132, 531);
             BackLbl.Margin = new Padding(4, 0, 4, 0);
             BackLbl.Name = "BackLbl";
             BackLbl.Size = new Size(140, 20);
@@ -188,15 +127,54 @@
             LastnameTxt.Size = new Size(187, 27);
             LastnameTxt.TabIndex = 40;
             // 
+            // UsernameTxt
+            // 
+            UsernameTxt.Font = new Font("Bookman Old Style", 10.8F);
+            UsernameTxt.Location = new Point(37, 195);
+            UsernameTxt.Margin = new Padding(5, 3, 5, 3);
+            UsernameTxt.Name = "UsernameTxt";
+            UsernameTxt.PlaceholderText = "Username";
+            UsernameTxt.Size = new Size(331, 29);
+            UsernameTxt.TabIndex = 30;
+            // 
+            // PasswordTxt
+            // 
+            PasswordTxt.Font = new Font("Bookman Old Style", 10.8F);
+            PasswordTxt.Location = new Point(37, 257);
+            PasswordTxt.Margin = new Padding(5, 3, 5, 3);
+            PasswordTxt.Name = "PasswordTxt";
+            PasswordTxt.PasswordChar = '*';
+            PasswordTxt.PlaceholderText = "Password";
+            PasswordTxt.Size = new Size(331, 29);
+            PasswordTxt.TabIndex = 31;
+            // 
+            // EmailTxt
+            // 
+            EmailTxt.Font = new Font("Bookman Old Style", 10.8F);
+            EmailTxt.Location = new Point(37, 381);
+            EmailTxt.Margin = new Padding(5, 3, 5, 3);
+            EmailTxt.Name = "EmailTxt";
+            EmailTxt.PlaceholderText = "Email";
+            EmailTxt.Size = new Size(331, 29);
+            EmailTxt.TabIndex = 34;
+            // 
+            // CpwTxt
+            // 
+            CpwTxt.Font = new Font("Bookman Old Style", 10.8F);
+            CpwTxt.Location = new Point(37, 319);
+            CpwTxt.Margin = new Padding(4, 3, 4, 3);
+            CpwTxt.Name = "CpwTxt";
+            CpwTxt.PlaceholderText = "Confirm password";
+            CpwTxt.Size = new Size(331, 29);
+            CpwTxt.TabIndex = 36;
+            // 
             // SignUpForm
             // 
             AutoScaleDimensions = new SizeF(13F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(399, 695);
+            ClientSize = new Size(399, 564);
             Controls.Add(LastnameTxt);
             Controls.Add(BackLbl);
-            Controls.Add(BirthdayLbl);
-            Controls.Add(dateTimePicker1);
             Controls.Add(CpwTxt);
             Controls.Add(FirstnameTxt);
             Controls.Add(EmailTxt);
@@ -204,7 +182,7 @@
             Controls.Add(PasswordTxt);
             Controls.Add(UsernameTxt);
             Controls.Add(lblSIGNIN);
-            Controls.Add(Panel1);
+            Controls.Add(MovementPanel);
             Controls.Add(Exit);
             Font = new Font("Bookman Old Style", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
@@ -216,19 +194,17 @@
         }
 
         #endregion
-        private Panel Panel1;
+        private Panel MovementPanel;
         private Label Exit;
-        private DateTimePicker dateTimePicker1;
-        private TextBox CpwTxt;
         private TextBox FirstnameTxt;
-        private TextBox EmailTxt;
         private TextBox IDLabel;
         private Button SignUpBtn;
-        private TextBox PasswordTxt;
-        private TextBox UsernameTxt;
         private Label lblSIGNIN;
-        private Label BirthdayLbl;
         private Label BackLbl;
         private TextBox LastnameTxt;
+        private TextBox UsernameTxt;
+        private TextBox PasswordTxt;
+        private TextBox EmailTxt;
+        private TextBox CpwTxt;
     }
 }

@@ -124,7 +124,7 @@
             // 
             CaLbl.AutoSize = true;
             CaLbl.ForeColor = Color.Gray;
-            CaLbl.Location = new Point(123, 390);
+            CaLbl.Location = new Point(123, 386);
             CaLbl.Name = "CaLbl";
             CaLbl.Size = new Size(144, 20);
             CaLbl.TabIndex = 33;

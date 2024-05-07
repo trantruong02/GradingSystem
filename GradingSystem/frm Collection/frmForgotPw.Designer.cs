@@ -31,7 +31,7 @@
             NpwTxt = new TextBox();
             BackLbl = new Label();
             UsernameTxt = new TextBox();
-            CnpTxt = new TextBox();
+            CpwTxt = new TextBox();
             SignUpBtn = new Button();
             lblSIGNIN = new Label();
             Panel1 = new Panel();
@@ -41,7 +41,7 @@
             // NpwTxt
             // 
             NpwTxt.Font = new Font("Bookman Old Style", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NpwTxt.Location = new Point(37, 264);
+            NpwTxt.Location = new Point(37, 258);
             NpwTxt.Margin = new Padding(4, 3, 4, 3);
             NpwTxt.Name = "NpwTxt";
             NpwTxt.PlaceholderText = "New password";
@@ -53,12 +53,13 @@
             BackLbl.AutoSize = true;
             BackLbl.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BackLbl.ForeColor = Color.DarkGray;
-            BackLbl.Location = new Point(132, 483);
+            BackLbl.Location = new Point(132, 469);
             BackLbl.Margin = new Padding(4, 0, 4, 0);
             BackLbl.Name = "BackLbl";
             BackLbl.Size = new Size(140, 20);
             BackLbl.TabIndex = 52;
             BackLbl.Text = "Back to LOGIN";
+            BackLbl.Click += BackLbl_Click;
             // 
             // UsernameTxt
             // 
@@ -70,15 +71,15 @@
             UsernameTxt.Size = new Size(331, 29);
             UsernameTxt.TabIndex = 48;
             // 
-            // CnpTxt
+            // CpwTxt
             // 
-            CnpTxt.Font = new Font("Bookman Old Style", 10.8F);
-            CnpTxt.Location = new Point(37, 339);
-            CnpTxt.Margin = new Padding(5, 3, 5, 3);
-            CnpTxt.Name = "CnpTxt";
-            CnpTxt.PlaceholderText = "Confirm your password";
-            CnpTxt.Size = new Size(331, 29);
-            CnpTxt.TabIndex = 47;
+            CpwTxt.Font = new Font("Bookman Old Style", 10.8F);
+            CpwTxt.Location = new Point(37, 322);
+            CpwTxt.Margin = new Padding(5, 3, 5, 3);
+            CpwTxt.Name = "CpwTxt";
+            CpwTxt.PlaceholderText = "Confirm your password";
+            CpwTxt.Size = new Size(331, 29);
+            CpwTxt.TabIndex = 47;
             // 
             // SignUpBtn
             // 
@@ -87,13 +88,14 @@
             SignUpBtn.FlatStyle = FlatStyle.Flat;
             SignUpBtn.Font = new Font("Bookman Old Style", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SignUpBtn.ForeColor = Color.FromArgb(37, 46, 255);
-            SignUpBtn.Location = new Point(132, 410);
+            SignUpBtn.Location = new Point(132, 393);
             SignUpBtn.Margin = new Padding(5, 3, 5, 3);
             SignUpBtn.Name = "SignUpBtn";
             SignUpBtn.Size = new Size(140, 35);
             SignUpBtn.TabIndex = 46;
-            SignUpBtn.Text = "SIGN UP";
+            SignUpBtn.Text = "RESET";
             SignUpBtn.UseVisualStyleBackColor = false;
+            SignUpBtn.Click += SignUpBtn_Click;
             // 
             // lblSIGNIN
             // 
@@ -133,11 +135,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(399, 519);
+            ClientSize = new Size(399, 504);
             Controls.Add(NpwTxt);
             Controls.Add(BackLbl);
             Controls.Add(UsernameTxt);
-            Controls.Add(CnpTxt);
+            Controls.Add(CpwTxt);
             Controls.Add(SignUpBtn);
             Controls.Add(lblSIGNIN);
             Controls.Add(Panel1);
@@ -154,7 +156,7 @@
         private TextBox NpwTxt;
         private Label BackLbl;
         private TextBox UsernameTxt;
-        private TextBox CnpTxt;
+        private TextBox CpwTxt;
         private Button SignUpBtn;
         private Label lblSIGNIN;
         private Panel Panel1;
