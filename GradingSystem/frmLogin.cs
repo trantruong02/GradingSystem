@@ -61,10 +61,37 @@ namespace GradingSystem
             this.Close();
         }
 
+        private string GetRole(string username, string password)
+        {
+            string role = "";
+
+            using (SqlConnection connection = new("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
+            {
+                connection.Open();
+                string query = "SELECT role FROM Teachers WHERE username = @Username AND password = @Password " +
+                               "UNION " +
+                               "SELECT role FROM Students WHERE username = @Username AND password = @Password";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@Password", password);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        role = reader["role"].ToString();
+                    }
+                    reader.Close();
+                }
+            }
+
+            return role;
+        }
+
         private void LoginBtn_Click_1(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
+            string role = GetRole(username, password);
             string title = "Notification";
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -73,12 +100,24 @@ namespace GradingSystem
             }
             else
             {
-                try
+                if (role == "Teacher")
                 {
-                    using (SqlConnection con = new SqlConnection("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
+                    FrmQuestion question = new();
+                    question.Show();
+                }
+                else if (role == "Student")
+                {
+                    FrmExams exams = new();
+                    exams.Show();
+                }
+                else { MessageBox.Show("Invalid username, password"); }
+                /*try
+                {
+                    using (SqlConnection con = new ("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
                     {
                         con.Open();
-                        using (SqlCommand cmd = new SqlCommand("SELECT count(*) FROM Teachers WHERE username = @username AND password = @password", con))
+                        
+                        using (SqlCommand cmd = new ("SELECT count(*) FROM Teachers WHERE username = @username AND password = @password", con))
                         {
                             cmd.Parameters.AddWithValue("@username", username);
                             cmd.Parameters.AddWithValue("@password", password);
@@ -98,7 +137,7 @@ namespace GradingSystem
                 catch (Exception ex)
                 {
                     MessageBox.Show("" + ex, title);
-                }
+                }*/
             }
         }
 

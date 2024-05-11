@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             Label lblLogin;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             Exit = new Label();
             Panel1 = new Panel();
             LoginBtn = new Button();
@@ -57,7 +58,7 @@
             Exit.BackColor = Color.White;
             Exit.Font = new Font("Bookman Old Style", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Exit.ForeColor = SystemColors.ActiveCaptionText;
-            Exit.Location = new Point(367, 9);
+            Exit.Location = new Point(367, 5);
             Exit.Name = "Exit";
             Exit.Size = new Size(29, 26);
             Exit.TabIndex = 5;
@@ -69,7 +70,7 @@
             Panel1.BackColor = Color.White;
             Panel1.Location = new Point(-1, -1);
             Panel1.Name = "Panel1";
-            Panel1.Size = new Size(362, 36);
+            Panel1.Size = new Size(405, 36);
             Panel1.TabIndex = 7;
             Panel1.MouseDown += Panel1_MouseDown;
             Panel1.MouseMove += Panel1_MouseMove;
@@ -142,13 +143,15 @@
             Controls.Add(lblLogin);
             Controls.Add(txtPassword);
             Controls.Add(LoginBtn);
-            Controls.Add(Panel1);
             Controls.Add(Exit);
+            Controls.Add(Panel1);
             DoubleBuffered = true;
             Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LOGIN";
             ResumeLayout(false);
             PerformLayout();

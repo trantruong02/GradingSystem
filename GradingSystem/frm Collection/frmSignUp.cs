@@ -60,29 +60,17 @@ namespace GradingSystem.frm_Collection
             this.Close();
         }
 
-        private bool IsTextboxEmpty(TextBox textBox)
+        private static bool IsTextboxEmpty(TextBox textBox)
         {
             return string.IsNullOrEmpty(textBox.Text);
         }
 
-        private string GenerateTeacherID()
-        {
-            using (SqlConnection connection = new SqlConnection("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
-            {
-                connection.Open();
-                string query = "SELECT ISNULL(MAX(CAST(SUBSTRING(ID, 3, LEN(ID)) AS INT)), 0) FROM Teachers";
-                SqlCommand command = new SqlCommand(query, connection);
-                int maxID = (int)command.ExecuteScalar();
-                return "GV" + (maxID + 1).ToString();
-            }
-        }
-
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
-            string TeacherID = GenerateTeacherID();
             string Firstname = FirstnameTxt.Text.Trim();
             string Lastname = LastnameTxt.Text.Trim();
-            string username = UsernameTxt.Text;
+            string role = "";
+            string username = UsernameTxt.Text.Trim();
             string password = PasswordTxt.Text;
             string confirm_password = CpwTxt.Text;
             string email = EmailTxt.Text;
@@ -100,30 +88,60 @@ namespace GradingSystem.frm_Collection
                 return;
             }
 
-            using (SqlConnection con = new SqlConnection("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
+            if(!TeacherRbtn.Checked || !StudentRbtn.Checked) { MessageBox.Show("You need to choose a role"); }
+
+            using (SqlConnection con = new ("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
             {
                 con.Open();
-                string query = " insert into Teachers (ID, FirstName, LastName, username, password, email)" + "values (@ID, @Firstname, @Lastname, @username, @password, @email)";
+                string query = " insert into Teachers (FirstName, LastName, username, password, email)" + "values (@Firstname, @Lastname, @username, @password, @email)";
+                string Squery = "insert into Students (FirstName, LastName, username, password, email) values (@Firstname, @Lastname, @username, @password, @email)";
 
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                
+                if(TeacherRbtn.Checked)
                 {
-                    cmd.Parameters.AddWithValue("@ID", TeacherID);
-                    cmd.Parameters.AddWithValue("@Firstname", Firstname);
-                    cmd.Parameters.AddWithValue("@Lastname", Lastname);
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
-                    cmd.Parameters.AddWithValue("@email", email);
-
-                    // thuc thi truy van 
-                    int result = cmd.ExecuteNonQuery();
-
-                    if (result == 1)
+                    using (SqlCommand cmd = new (query, con))
                     {
-                        MessageBox.Show("Sign up    success");
+                        cmd.Parameters.AddWithValue("@Firstname", Firstname);
+                        cmd.Parameters.AddWithValue("@Lastname", Lastname);
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        cmd.Parameters.AddWithValue("@email", email);
+
+                        // thuc thi truy van 
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result == 1)
+                        {
+                            MessageBox.Show("Sign up success");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sign up failed");
+                        }
                     }
-                    else
+                } 
+                
+                if(StudentRbtn.Checked) 
+                {
+                    using (SqlCommand cmd = new (Squery, con))
                     {
-                        MessageBox.Show("Sign up failed");
+                        cmd.Parameters.AddWithValue("@Firstname", Firstname);
+                        cmd.Parameters.AddWithValue("@Lastname", Lastname);
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        cmd.Parameters.AddWithValue("@email", email);
+
+                        // thuc thi truy van 
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result == 1)
+                        {
+                            MessageBox.Show("Sign up success");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sign up failed");
+                        }
                     }
                 }
             }

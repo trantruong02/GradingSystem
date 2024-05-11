@@ -36,6 +36,7 @@
             lblSIGNIN = new Label();
             Panel1 = new Panel();
             Exit = new Label();
+            Panel1.SuspendLayout();
             SuspendLayout();
             // 
             // NpwTxt
@@ -112,10 +113,11 @@
             // Panel1
             // 
             Panel1.BackColor = Color.White;
+            Panel1.Controls.Add(Exit);
             Panel1.Location = new Point(0, 0);
             Panel1.Margin = new Padding(4, 3, 4, 3);
             Panel1.Name = "Panel1";
-            Panel1.Size = new Size(369, 36);
+            Panel1.Size = new Size(400, 36);
             Panel1.TabIndex = 42;
             // 
             // Exit
@@ -124,7 +126,7 @@
             Exit.BackColor = Color.White;
             Exit.Font = new Font("Bookman Old Style", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
-            Exit.Location = new Point(367, 9);
+            Exit.Location = new Point(367, 5);
             Exit.Margin = new Padding(4, 0, 4, 0);
             Exit.Name = "Exit";
             Exit.Size = new Size(29, 26);
@@ -143,10 +145,12 @@
             Controls.Add(SignUpBtn);
             Controls.Add(lblSIGNIN);
             Controls.Add(Panel1);
-            Controls.Add(Exit);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmForgotPw";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ForgotPw";
+            Panel1.ResumeLayout(false);
+            Panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

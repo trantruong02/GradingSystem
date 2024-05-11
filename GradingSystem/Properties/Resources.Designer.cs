@@ -63,59 +63,9 @@ namespace GradingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ảnh_chụp_màn_hình_2024_05_05_083823 {
+        internal static System.Drawing.Bitmap Logo {
             get {
-                object obj = ResourceManager.GetObject("Ảnh chụp màn hình 2024-05-05 083823", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap back__1_ {
-            get {
-                object obj = ResourceManager.GetObject("back (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap down {
-            get {
-                object obj = ResourceManager.GetObject("down", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap eye {
-            get {
-                object obj = ResourceManager.GetObject("eye", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap login {
-            get {
-                object obj = ResourceManager.GetObject("login", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap next {
-            get {
-                object obj = ResourceManager.GetObject("next", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

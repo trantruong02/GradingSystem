@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpForm));
             MovementPanel = new Panel();
             Exit = new Label();
             FirstnameTxt = new TextBox();
@@ -39,15 +40,20 @@
             PasswordTxt = new TextBox();
             EmailTxt = new TextBox();
             CpwTxt = new TextBox();
+            TeacherRbtn = new RadioButton();
+            StudentRbtn = new RadioButton();
+            RoleLbl = new Label();
+            MovementPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MovementPanel
             // 
             MovementPanel.BackColor = Color.White;
+            MovementPanel.Controls.Add(Exit);
             MovementPanel.Location = new Point(-1, 0);
             MovementPanel.Margin = new Padding(4, 3, 4, 3);
             MovementPanel.Name = "MovementPanel";
-            MovementPanel.Size = new Size(362, 36);
+            MovementPanel.Size = new Size(402, 36);
             MovementPanel.TabIndex = 28;
             MovementPanel.MouseDown += MovementPanel_MouseDown;
             MovementPanel.MouseMove += MovementPanel_MouseMove;
@@ -59,7 +65,7 @@
             Exit.BackColor = Color.White;
             Exit.Font = new Font("Bookman Old Style", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
-            Exit.Location = new Point(368, 9);
+            Exit.Location = new Point(367, 5);
             Exit.Margin = new Padding(4, 0, 4, 0);
             Exit.Name = "Exit";
             Exit.Size = new Size(29, 26);
@@ -83,7 +89,7 @@
             SignUpBtn.FlatStyle = FlatStyle.Flat;
             SignUpBtn.Font = new Font("Bookman Old Style", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SignUpBtn.ForeColor = Color.FromArgb(37, 46, 255);
-            SignUpBtn.Location = new Point(113, 438);
+            SignUpBtn.Location = new Point(113, 486);
             SignUpBtn.Margin = new Padding(5, 3, 5, 3);
             SignUpBtn.Name = "SignUpBtn";
             SignUpBtn.Size = new Size(178, 35);
@@ -109,7 +115,7 @@
             BackLbl.AutoSize = true;
             BackLbl.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BackLbl.ForeColor = Color.DarkGray;
-            BackLbl.Location = new Point(132, 531);
+            BackLbl.Location = new Point(132, 579);
             BackLbl.Margin = new Padding(4, 0, 4, 0);
             BackLbl.Name = "BackLbl";
             BackLbl.Size = new Size(140, 20);
@@ -130,7 +136,7 @@
             // UsernameTxt
             // 
             UsernameTxt.Font = new Font("Bookman Old Style", 10.8F);
-            UsernameTxt.Location = new Point(37, 195);
+            UsernameTxt.Location = new Point(37, 241);
             UsernameTxt.Margin = new Padding(5, 3, 5, 3);
             UsernameTxt.Name = "UsernameTxt";
             UsernameTxt.PlaceholderText = "Username";
@@ -140,7 +146,7 @@
             // PasswordTxt
             // 
             PasswordTxt.Font = new Font("Bookman Old Style", 10.8F);
-            PasswordTxt.Location = new Point(37, 257);
+            PasswordTxt.Location = new Point(37, 303);
             PasswordTxt.Margin = new Padding(5, 3, 5, 3);
             PasswordTxt.Name = "PasswordTxt";
             PasswordTxt.PasswordChar = '*';
@@ -151,7 +157,7 @@
             // EmailTxt
             // 
             EmailTxt.Font = new Font("Bookman Old Style", 10.8F);
-            EmailTxt.Location = new Point(37, 381);
+            EmailTxt.Location = new Point(37, 427);
             EmailTxt.Margin = new Padding(5, 3, 5, 3);
             EmailTxt.Name = "EmailTxt";
             EmailTxt.PlaceholderText = "Email";
@@ -161,18 +167,58 @@
             // CpwTxt
             // 
             CpwTxt.Font = new Font("Bookman Old Style", 10.8F);
-            CpwTxt.Location = new Point(37, 319);
+            CpwTxt.Location = new Point(37, 365);
             CpwTxt.Margin = new Padding(4, 3, 4, 3);
             CpwTxt.Name = "CpwTxt";
             CpwTxt.PlaceholderText = "Confirm password";
             CpwTxt.Size = new Size(331, 29);
             CpwTxt.TabIndex = 36;
             // 
+            // TeacherRbtn
+            // 
+            TeacherRbtn.AutoSize = true;
+            TeacherRbtn.Font = new Font("Bookman Old Style", 10.8F);
+            TeacherRbtn.ForeColor = Color.Gray;
+            TeacherRbtn.Location = new Point(124, 195);
+            TeacherRbtn.Name = "TeacherRbtn";
+            TeacherRbtn.Size = new Size(101, 24);
+            TeacherRbtn.TabIndex = 41;
+            TeacherRbtn.TabStop = true;
+            TeacherRbtn.Text = "Teacher";
+            TeacherRbtn.UseVisualStyleBackColor = true;
+            // 
+            // StudentRbtn
+            // 
+            StudentRbtn.AutoSize = true;
+            StudentRbtn.Font = new Font("Bookman Old Style", 10.8F);
+            StudentRbtn.ForeColor = Color.Gray;
+            StudentRbtn.Location = new Point(267, 195);
+            StudentRbtn.Name = "StudentRbtn";
+            StudentRbtn.Size = new Size(101, 24);
+            StudentRbtn.TabIndex = 42;
+            StudentRbtn.TabStop = true;
+            StudentRbtn.Text = "Student";
+            StudentRbtn.UseVisualStyleBackColor = true;
+            // 
+            // RoleLbl
+            // 
+            RoleLbl.AutoSize = true;
+            RoleLbl.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RoleLbl.ForeColor = Color.Gray;
+            RoleLbl.Location = new Point(37, 197);
+            RoleLbl.Name = "RoleLbl";
+            RoleLbl.Size = new Size(47, 20);
+            RoleLbl.TabIndex = 43;
+            RoleLbl.Text = "Role";
+            // 
             // SignUpForm
             // 
             AutoScaleDimensions = new SizeF(13F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(399, 564);
+            ClientSize = new Size(399, 614);
+            Controls.Add(RoleLbl);
+            Controls.Add(StudentRbtn);
+            Controls.Add(TeacherRbtn);
             Controls.Add(LastnameTxt);
             Controls.Add(BackLbl);
             Controls.Add(CpwTxt);
@@ -183,12 +229,15 @@
             Controls.Add(UsernameTxt);
             Controls.Add(lblSIGNIN);
             Controls.Add(MovementPanel);
-            Controls.Add(Exit);
             Font = new Font("Bookman Old Style", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 3, 5, 3);
             Name = "SignUpForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmSignup";
+            MovementPanel.ResumeLayout(false);
+            MovementPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -206,5 +255,8 @@
         private TextBox PasswordTxt;
         private TextBox EmailTxt;
         private TextBox CpwTxt;
+        private RadioButton TeacherRbtn;
+        private RadioButton StudentRbtn;
+        private Label RoleLbl;
     }
 }
