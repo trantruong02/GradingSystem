@@ -12,14 +12,14 @@ using FontAwesome.Sharp;
 
 namespace GradingSystem.frm_Collection
 {
-    public partial class Dashboard : Form
+    public partial class frmMainMenu : Form
     {
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         bool drag = false;
         Point starting_point = new(0, 0);
 
-        public Dashboard()
+        public frmMainMenu()
         {
             InitializeComponent();
             leftBorderBtn = new();
@@ -27,21 +27,21 @@ namespace GradingSystem.frm_Collection
             MenuPanel.Controls.Add(leftBorderBtn);
 
             this.MainPanel.Controls.Clear();
-            FrmQuestion question = new()
+            frmDashboard Home = new()
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
                 TopMost = true
             };
-            question.FormBorderStyle = FormBorderStyle.None;
-            this.MainPanel.Controls.Add(question);
-            question.Show();
+            Home.FormBorderStyle = FormBorderStyle.None;
+            this.MainPanel.Controls.Add(Home);
+            Home.Show();
         }
 
         private struct RGBColors
         {
             public static Color color1 = Color.FromArgb(90, 178, 255);
-            public static Color color2 = Color.FromArgb(160, 222, 255);
+            public static Color color2 = Color.FromArgb(132, 55, 173); // tim sang 
             public static Color color3 = Color.FromArgb(202, 244, 255);
             public static Color color4 = Color.FromArgb(205, 232, 229);
             public static Color color5 = Color.FromArgb(122, 178, 178);
@@ -73,13 +73,28 @@ namespace GradingSystem.frm_Collection
         {
             if (currentBtn != null)
             {
-                currentBtn.BackColor = Color.FromArgb(205, 232, 229);
+                currentBtn.BackColor = Color.White;
                 currentBtn.ForeColor = Color.Black;
                 currentBtn.TextAlign = ContentAlignment.MiddleLeft;
                 currentBtn.IconColor = Color.Black;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
             }
+        }
+
+        private void DashboardBtn_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, RGBColors.color1);
+            this.MainPanel.Controls.Clear();
+            frmDashboard frmDashboard = new()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true
+            };
+            frmDashboard.FormBorderStyle = FormBorderStyle.None;
+            this.MainPanel.Controls.Add(frmDashboard);
+            frmDashboard.Show();
         }
 
         private void LogoutBtn_Click(object sender, EventArgs e)
@@ -97,6 +112,7 @@ namespace GradingSystem.frm_Collection
             ActiveButton(sender, RGBColors.color3);
 
             this.MainPanel.Controls.Clear();
+            NamePage.Text = "Questions";
             FrmQuestion frmQues = new()
             {
                 Dock = DockStyle.Fill,
@@ -106,14 +122,15 @@ namespace GradingSystem.frm_Collection
             frmQues.FormBorderStyle = FormBorderStyle.None;
             this.MainPanel.Controls.Add(frmQues);
             frmQues.Show();
+
         }
 
         private void ExamsBtn_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, RGBColors.color2);
-            /*OpenChildform(new SignUpForm());*/
 
             this.MainPanel.Controls.Clear();
+            NamePage.Text = "Exams";
             FrmExams frmExams = new()
             {
                 Dock = DockStyle.Fill,
@@ -129,6 +146,7 @@ namespace GradingSystem.frm_Collection
         {
             ActiveButton(sender, RGBColors.color5);
             this.MainPanel.Controls.Clear();
+            NamePage.Text = "Scores";
             FrmExams frmExams = new()
             {
                 Dock = DockStyle.Fill,
@@ -144,6 +162,7 @@ namespace GradingSystem.frm_Collection
         {
             ActiveButton(sender, RGBColors.color4);
             this.MainPanel.Controls.Clear();
+            NamePage.Text = "Contact";
             FrmExams frmExams = new()
             {
                 Dock = DockStyle.Fill,
@@ -181,7 +200,5 @@ namespace GradingSystem.frm_Collection
         {
             drag = false;
         }
-
-        
     }
 }

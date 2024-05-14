@@ -85,10 +85,10 @@
             // SignUpBtn
             // 
             SignUpBtn.BackColor = Color.White;
-            SignUpBtn.FlatAppearance.BorderColor = Color.FromArgb(37, 46, 255);
+            SignUpBtn.FlatAppearance.BorderColor = Color.FromArgb(255, 152, 67);
             SignUpBtn.FlatStyle = FlatStyle.Flat;
             SignUpBtn.Font = new Font("Bookman Old Style", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SignUpBtn.ForeColor = Color.FromArgb(37, 46, 255);
+            SignUpBtn.ForeColor = Color.FromArgb(255, 152, 0);
             SignUpBtn.Location = new Point(113, 486);
             SignUpBtn.Margin = new Padding(5, 3, 5, 3);
             SignUpBtn.Name = "SignUpBtn";
@@ -102,7 +102,7 @@
             // 
             lblSIGNIN.AutoSize = true;
             lblSIGNIN.Font = new Font("Bookman Old Style", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSIGNIN.ForeColor = Color.FromArgb(37, 46, 255);
+            lblSIGNIN.ForeColor = Color.FromArgb(255, 132, 0);
             lblSIGNIN.Location = new Point(113, 64);
             lblSIGNIN.Margin = new Padding(8, 0, 8, 0);
             lblSIGNIN.Name = "lblSIGNIN";

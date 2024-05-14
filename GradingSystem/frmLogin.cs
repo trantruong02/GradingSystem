@@ -71,7 +71,7 @@ namespace GradingSystem
                 string query = "SELECT role FROM Teachers WHERE username = @Username AND password = @Password " +
                                "UNION " +
                                "SELECT role FROM Students WHERE username = @Username AND password = @Password";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new (query, connection))
                 {
                     command.Parameters.AddWithValue("@Username", username);
                     command.Parameters.AddWithValue("@Password", password);

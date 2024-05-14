@@ -44,7 +44,7 @@
             // 
             lblLogin.AutoSize = true;
             lblLogin.Font = new Font("Bookman Old Style", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLogin.ForeColor = Color.FromArgb(37, 46, 255);
+            lblLogin.ForeColor = Color.FromArgb(255, 132, 0);
             lblLogin.Location = new Point(123, 63);
             lblLogin.Margin = new Padding(6, 0, 6, 0);
             lblLogin.Name = "lblLogin";
@@ -79,10 +79,10 @@
             // LoginBtn
             // 
             LoginBtn.BackColor = Color.White;
-            LoginBtn.FlatAppearance.BorderColor = Color.FromArgb(37, 46, 255);
+            LoginBtn.FlatAppearance.BorderColor = Color.FromArgb(255, 152, 0);
             LoginBtn.FlatStyle = FlatStyle.Flat;
             LoginBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LoginBtn.ForeColor = Color.FromArgb(37, 46, 255);
+            LoginBtn.ForeColor = Color.FromArgb(255, 152, 0);
             LoginBtn.Location = new Point(131, 306);
             LoginBtn.Name = "LoginBtn";
             LoginBtn.Size = new Size(129, 35);
@@ -113,8 +113,8 @@
             // 
             ForgotPw.AutoSize = true;
             ForgotPw.Font = new Font("Bookman Old Style", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ForgotPw.ForeColor = Color.FromArgb(255, 137, 17);
-            ForgotPw.Location = new Point(206, 251);
+            ForgotPw.ForeColor = Color.DarkGray;
+            ForgotPw.Location = new Point(213, 251);
             ForgotPw.Name = "ForgotPw";
             ForgotPw.Size = new Size(148, 21);
             ForgotPw.TabIndex = 32;
