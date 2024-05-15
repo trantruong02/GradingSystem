@@ -123,16 +123,28 @@ namespace GradingSystem.frm_Collection
                 
                 if(StudentRbtn.Checked) 
                 {
-                    using (SqlCommand cmd = new (Squery, con))
-                    {
-                        cmd.Parameters.AddWithValue("@Firstname", Firstname);
-                        cmd.Parameters.AddWithValue("@Lastname", Lastname);
-                        cmd.Parameters.AddWithValue("@username", username);
-                        cmd.Parameters.AddWithValue("@password", password);
-                        cmd.Parameters.AddWithValue("@email", email);
+                   int result = 0;
 
-                        // thuc thi truy van 
-                        int result = cmd.ExecuteNonQuery();
+
+                ////con.Open();
+                ////string query = " insert into Teachers (ID, FirstName, LastName, username, password, email)" + "values (@ID, @Firstname, @Lastname, @username, @password, @email)";
+
+                ////using (SqlCommand cmd = new SqlCommand(query, con))
+                ////{
+                ////    cmd.Parameters.AddWithValue("@ID", TeacherID);
+                ////    cmd.Parameters.AddWithValue("@Firstname", Firstname);
+                ////    cmd.Parameters.AddWithValue("@Lastname", Lastname);
+                ////    cmd.Parameters.AddWithValue("@username", username);
+                ////    cmd.Parameters.AddWithValue("@password", password);
+                ////    cmd.Parameters.AddWithValue("@email", email);
+
+                ////    // thuc thi truy van 
+                ////    result = cmd.ExecuteNonQuery();
+
+
+                ////}
+                Teachers a = new Teachers("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True");
+                a.Create(Firstname, Lastname, username,password, email, new DateTime(2023, 1, 1), "");
 
                         if (result == 1)
                         {
