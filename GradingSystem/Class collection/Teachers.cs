@@ -13,14 +13,24 @@ namespace GradingSystem.Class_collection
     public class Teachers
     {
         private string connectionString;
+        string id;
+        string firstName;
+        string lastName; 
+        string username;
+        string password;
+        string email;
+        DateTime dateOfBirth;
+        string phoneNumber;
+
 
         public Teachers(string connectionString)
         {
             this.connectionString = connectionString;
         }
 
-        public void Create(string firstName, string lastName, string username, string password, string email, DateTime dateOfBirth, string phoneNumber)
+        public int Create(string firstName, string lastName, string username, string password, string email, DateTime dateOfBirth, string phoneNumber)
         {
+            int result = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -28,17 +38,27 @@ namespace GradingSystem.Class_collection
                                "VALUES (@ID, @FirstName, @LastName, @Username, @Password, @Email, @DateOfBirth, @PhoneNumber)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@ID", GenerateTeacherID());
+                    this.id = GenerateTeacherID();
+                    command.Parameters.AddWithValue("@ID", this.id);
+                    this.firstName = firstName;
                     command.Parameters.AddWithValue("@FirstName", firstName);
+                    this.lastName = lastName;
                     command.Parameters.AddWithValue("@LastName", lastName);
+                    this.username = username;
                     command.Parameters.AddWithValue("@Username", username);
+                    this.password = password;
                     command.Parameters.AddWithValue("@Password", password);
+                    this.email = email;
                     command.Parameters.AddWithValue("@Email", email);
+                    this.dateOfBirth = dateOfBirth;
                     command.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
+                    this.phoneNumber = phoneNumber;
                     command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
                     command.ExecuteNonQuery();
+                    result = command.ExecuteNonQuery();
                 }
             }
+            return result;
         }
 
         public void Update(string id, string firstName, string lastName, string username, string password, string email, DateTime dateOfBirth, string phoneNumber)
