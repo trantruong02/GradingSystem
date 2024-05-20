@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -108,7 +108,7 @@ namespace GradingSystem.frm_Collection
                 ChangeBorder(CpwTxt);
                 return;
             }
-
+            
             using (SqlConnection con = new("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
             {
                 con.Open();
@@ -133,8 +133,7 @@ namespace GradingSystem.frm_Collection
                     {
                         MessageBox.Show("Sign up failed");
                     }
-                }
-            }
+            
         }
     }
 }
