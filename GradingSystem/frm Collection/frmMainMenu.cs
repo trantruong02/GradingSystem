@@ -38,6 +38,8 @@ namespace GradingSystem.frm_Collection
             Home.Show();
         }
 
+        // 255, 204, 112
+        // mau nen: 255, 250, 221
         private struct RGBColors
         {
             public static Color color1 = Color.FromArgb(90, 178, 255);
@@ -73,8 +75,8 @@ namespace GradingSystem.frm_Collection
         {
             if (currentBtn != null)
             {
-                currentBtn.BackColor = Color.White;
-                currentBtn.ForeColor = Color.Black;
+                currentBtn.BackColor = Color.FromArgb(34, 102, 141);
+                currentBtn.ForeColor = Color.White;
                 currentBtn.TextAlign = ContentAlignment.MiddleLeft;
                 currentBtn.IconColor = Color.Black;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -112,7 +114,6 @@ namespace GradingSystem.frm_Collection
             ActiveButton(sender, RGBColors.color3);
 
             this.MainPanel.Controls.Clear();
-            NamePage.Text = "Questions";
             FrmQuestion frmQues = new()
             {
                 Dock = DockStyle.Fill,
@@ -130,7 +131,6 @@ namespace GradingSystem.frm_Collection
             ActiveButton(sender, RGBColors.color2);
 
             this.MainPanel.Controls.Clear();
-            NamePage.Text = "Exams";
             FrmExams frmExams = new()
             {
                 Dock = DockStyle.Fill,
@@ -146,7 +146,6 @@ namespace GradingSystem.frm_Collection
         {
             ActiveButton(sender, RGBColors.color5);
             this.MainPanel.Controls.Clear();
-            NamePage.Text = "Scores";
             FrmExams frmExams = new()
             {
                 Dock = DockStyle.Fill,
@@ -162,7 +161,6 @@ namespace GradingSystem.frm_Collection
         {
             ActiveButton(sender, RGBColors.color4);
             this.MainPanel.Controls.Clear();
-            NamePage.Text = "Contact";
             FrmExams frmExams = new()
             {
                 Dock = DockStyle.Fill,
