@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using Microsoft.Data.SqlClient;
 
 namespace GradingSystem.frm_Collection
 {
@@ -24,11 +23,11 @@ namespace GradingSystem.frm_Collection
         private void BackLbl_Click(object sender, EventArgs e)
         {
             this.Hide();
-            LoginForm loginForm = new();
+            FrmLogin loginForm = new();
             loginForm.ShowDialog();
             this.Close();
         }
-        private bool IsTextboxEmpty(TextBox textBox)
+        private static bool IsTextboxEmpty(TextBox textBox)
         {
             return string.IsNullOrEmpty(textBox.Text);
         }
@@ -50,12 +49,12 @@ namespace GradingSystem.frm_Collection
                 return;
             }
 
-            using (SqlConnection con = new SqlConnection("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
+            using (SqlConnection con = new ("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
             {
                 con.Open();
                 string query = "update Teachers set password = @password where username = @username";
 
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlCommand cmd = new (query, con))
                 {
                     cmd.Parameters.AddWithValue("username", username);
                     cmd.Parameters.AddWithValue ("password", NewPw);

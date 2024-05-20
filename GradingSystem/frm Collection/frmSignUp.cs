@@ -8,17 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GradingSystem.Class_collection;
+using Guna.UI2.WinForms;
 
 namespace GradingSystem.frm_Collection
 {
-    public partial class SignUpForm : Form
+    public partial class FrmSignup : Form
     {
         // make movable form 
         bool drag = false;
         Point starting_point = new(0, 0);
 
-        public SignUpForm()
+        public FrmSignup()
         {
             InitializeComponent();
         }
@@ -56,81 +56,83 @@ namespace GradingSystem.frm_Collection
         private void BackLbl_Click(object sender, EventArgs e)
         {
             this.Hide();
-            LoginForm loginForm = new();
+            FrmLogin loginForm = new();
             loginForm.ShowDialog();
             this.Close();
         }
 
-        private bool IsTextboxEmpty(TextBox textBox)
+        private static bool IsTextboxEmpty(Guna2TextBox textBox)
         {
             return string.IsNullOrEmpty(textBox.Text);
         }
 
-        private string GenerateTeacherID()
+        private bool CheckandChange(Guna2TextBox textBox)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
+            if (IsTextboxEmpty(textBox))
             {
-                connection.Open();
-                string query = "SELECT ISNULL(MAX(CAST(SUBSTRING(ID, 3, LEN(ID)) AS INT)), 0) FROM Teachers";
-                SqlCommand command = new SqlCommand(query, connection);
-                int maxID = (int)command.ExecuteScalar();
-                return "GV" + (maxID + 1).ToString();
+                ChangeBorder(textBox);
+                return true;
             }
+            return false;
+        }
+
+        private string SelectedRole()
+        {
+            if (TeacherRbtn.Checked) { return "teacher"; } else { return "student"; }
+        }
+
+        private static void ChangeBorder(Guna2TextBox textBox) 
+        {
+            textBox.BorderColor = Color.FromArgb(243, 36, 36);
         }
 
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
-          
-            string Firstname = FirstnameTxt.Text.Trim();
-            string Lastname = LastnameTxt.Text.Trim();
-            string username = UsernameTxt.Text;
+            string role = "";
+            string username = UsernameTxt.Text.Trim();
             string password = PasswordTxt.Text;
             string confirm_password = CpwTxt.Text;
             string email = EmailTxt.Text;
-            string title = "Notification";
+            bool isAnyTextboxEmpty = false;
 
-            if (IsTextboxEmpty(FirstnameTxt) || IsTextboxEmpty(LastnameTxt) || IsTextboxEmpty(UsernameTxt) || IsTextboxEmpty(PasswordTxt) || IsTextboxEmpty(CpwTxt) || IsTextboxEmpty(EmailTxt))
-            {
-                MessageBox.Show("Please fill out all information in all fields", title);
-                return;
-            }
+            // Check each textbox using the new method
+            isAnyTextboxEmpty |= CheckandChange(UsernameTxt);
+            isAnyTextboxEmpty |= CheckandChange(PasswordTxt);
+            isAnyTextboxEmpty |= CheckandChange(CpwTxt);
+            isAnyTextboxEmpty |= CheckandChange(EmailTxt);
+
+            if (isAnyTextboxEmpty) { return; }
 
             if (confirm_password != password)
             {
-                MessageBox.Show("Your password is not correct", title);
+                ChangeBorder(CpwTxt);
                 return;
             }
+            
+            using (SqlConnection con = new("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
+            {
+                con.Open();
+                string query = " insert into Users (username, password, email, role) values (@username, @password, @email, @role)";
 
-            int result = 0;
-
-
-                ////con.Open();
-                ////string query = " insert into Teachers (ID, FirstName, LastName, username, password, email)" + "values (@ID, @Firstname, @Lastname, @username, @password, @email)";
-
-                ////using (SqlCommand cmd = new SqlCommand(query, con))
-                ////{
-                ////    cmd.Parameters.AddWithValue("@ID", TeacherID);
-                ////    cmd.Parameters.AddWithValue("@Firstname", Firstname);
-                ////    cmd.Parameters.AddWithValue("@Lastname", Lastname);
-                ////    cmd.Parameters.AddWithValue("@username", username);
-                ////    cmd.Parameters.AddWithValue("@password", password);
-                ////    cmd.Parameters.AddWithValue("@email", email);
-
-                ////    // thuc thi truy van 
-                ////    result = cmd.ExecuteNonQuery();
-
-
-                ////}
-                Teachers a = new Teachers("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True");
-                a.Create(Firstname, Lastname, username,password, email, new DateTime(2023, 1, 1), "");
-                if (result == 1)
+                role = SelectedRole();
+                using (SqlCommand cmd = new(query, con))
                 {
-                    MessageBox.Show("Sign up    success");
-                }
-                else
-                {
-                    MessageBox.Show("Sign up failed");
-                }
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@role", role);
+
+                    // thuc thi truy van 
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Sign up success");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sign up failed");
+                    }
             
         }
     }

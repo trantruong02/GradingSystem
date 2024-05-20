@@ -1,28 +1,24 @@
 ﻿using GradingSystem.frm_Collection;
+using Guna.UI2.WinForms;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
 namespace GradingSystem
 {
-    public partial class LoginForm : Form
+    public partial class FrmLogin : Form
     {
         // make movable form 
         bool drag = false;
         Point starting_point = new(0, 0);
 
-        public LoginForm()
+        public FrmLogin()
         {
             InitializeComponent();
         }
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            string message = "Do you want to close this window?";
-            string title = "Close window";
-            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-
-            if (result == DialogResult.OK) { this.Close(); } else { return; }
+            this.Close();
         }
 
         private void Panel1_MouseDown(object sender, MouseEventArgs e)
@@ -45,36 +41,46 @@ namespace GradingSystem
             drag = false;
         }
 
-        private void ForgotPW_Click_1(object sender, EventArgs e)
-        {
-            this.Hide();
-            SignUpForm frmForgotPassword = new();
-            frmForgotPassword.ShowDialog();
-            this.Close();
-        }
-
         private void CaLbl_Click(object sender, EventArgs e)
         {
             this.Hide();
-            SignUpForm frmForgotPassword = new();
+            FrmSignup frmForgotPassword = new();
             frmForgotPassword.ShowDialog();
             this.Close();
         }
 
-        private string GetRole(string username, string password)
+        private static void ChangeBorder(Guna2TextBox textBox)
+        {
+            textBox.BorderColor = Color.FromArgb(243, 36, 36);
+        }
+
+        private static bool IsTextboxEmpty(Guna2TextBox textBox)
+        {
+            return string.IsNullOrEmpty(textBox.Text);
+        }
+
+        private bool CheckandChange(Guna2TextBox textBox)
+        {
+            if (IsTextboxEmpty(textBox))
+            {
+                ChangeBorder(textBox);
+                return true;
+            }
+            return false;
+        }
+
+        private static string GetRole(string username, string password)
         {
             string role = "";
 
             using (SqlConnection connection = new("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
             {
                 connection.Open();
-                string query = "SELECT role FROM Teachers WHERE username = @Username AND password = @Password " +
-                               "UNION " +
-                               "SELECT role FROM Students WHERE username = @Username AND password = @Password";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string query = "select username, password, role from Users where username = @username and password = @password ";
+                using (SqlCommand command = new (query, connection))
                 {
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password);
+                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@password", password);
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {
@@ -87,57 +93,34 @@ namespace GradingSystem
             return role;
         }
 
-        private void LoginBtn_Click_1(object sender, EventArgs e)
+        private void LoginBtn_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string role = GetRole(username, password);
-            string title = "Notification";
+            bool isAnyTextboxEmpty = false;
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            // Check each textbox using the new method
+            isAnyTextboxEmpty |= CheckandChange(txtUsername);
+            isAnyTextboxEmpty |= CheckandChange(txtPassword);
+
+            if (isAnyTextboxEmpty)
             {
-                MessageBox.Show("Username or password is empty", title);
+                return;
             }
             else
             {
-                if (role == "Teacher")
+                if (role == "teacher")
                 {
                     FrmQuestion question = new();
                     question.Show();
                 }
-                else if (role == "Student")
+                else if (role == "student")
                 {
                     FrmExams exams = new();
                     exams.Show();
                 }
                 else { MessageBox.Show("Invalid username, password"); }
-                /*try
-                {
-                    using (SqlConnection con = new ("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
-                    {
-                        con.Open();
-                        
-                        using (SqlCommand cmd = new ("SELECT count(*) FROM Teachers WHERE username = @username AND password = @password", con))
-                        {
-                            cmd.Parameters.AddWithValue("@username", username);
-                            cmd.Parameters.AddWithValue("@password", password);
-                            int count = (int)cmd.ExecuteScalar();
-
-                            if (count > 0)
-                            {
-                                MessageBox.Show("Login success");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Username or password is wrong");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("" + ex, title);
-                }*/
             }
         }
 
