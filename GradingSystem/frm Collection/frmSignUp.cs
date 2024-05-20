@@ -133,7 +133,8 @@ namespace GradingSystem.frm_Collection
                     {
                         MessageBox.Show("Sign up failed");
                     }
-            
+                }
+            }
         }
     }
 }
