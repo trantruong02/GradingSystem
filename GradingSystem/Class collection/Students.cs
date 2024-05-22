@@ -8,16 +8,18 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 
 
+
 namespace GradingSystem.Class_collection
 {
     public class Students : User
     {
         private string connectionString;
-        string tableName = "Student";
+        string tableName;
 
-        public Students(string connectionString)
+        
+        public override void SetName()
         {
-            this.connectionString = connectionString;
+            this.tableName = "Student";
         }
 
     }
