@@ -7,17 +7,17 @@ using System.Data;
 
 using Microsoft.Data.SqlClient;
 
-
 namespace GradingSystem.Class_collection
 {
     public class Teachers : User
     {
         private string connectionString;
-        string tableName = "Teacher";
+        string tableName;
 
-        public Teachers(string connectionString)
+        
+        public override void SetName()
         {
-            this.connectionString = connectionString;
+            this.tableName = "Teacher";
         }
 
     }
