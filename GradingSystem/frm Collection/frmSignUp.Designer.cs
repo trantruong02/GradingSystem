@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSignup));
             panel3 = new Panel();
             Exit = new Label();
@@ -79,6 +79,7 @@
             Exit.Size = new Size(24, 21);
             Exit.TabIndex = 49;
             Exit.Text = "X";
+            Exit.Click += Exit_Click;
             // 
             // lblSIGNIN
             // 
@@ -159,7 +160,7 @@
             // 
             UsernameTxt.BorderColor = Color.LightGray;
             UsernameTxt.BorderRadius = 20;
-            UsernameTxt.CustomizableEdges = customizableEdges11;
+            UsernameTxt.CustomizableEdges = customizableEdges1;
             UsernameTxt.DefaultText = "";
             UsernameTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             UsernameTxt.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -175,7 +176,7 @@
             UsernameTxt.PlaceholderForeColor = Color.DarkGray;
             UsernameTxt.PlaceholderText = "Username";
             UsernameTxt.SelectedText = "";
-            UsernameTxt.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            UsernameTxt.ShadowDecoration.CustomizableEdges = customizableEdges2;
             UsernameTxt.Size = new Size(331, 41);
             UsernameTxt.TabIndex = 57;
             // 
@@ -183,7 +184,7 @@
             // 
             PasswordTxt.BorderColor = Color.LightGray;
             PasswordTxt.BorderRadius = 20;
-            PasswordTxt.CustomizableEdges = customizableEdges13;
+            PasswordTxt.CustomizableEdges = customizableEdges3;
             PasswordTxt.DefaultText = "";
             PasswordTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             PasswordTxt.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -199,7 +200,7 @@
             PasswordTxt.PlaceholderForeColor = Color.DarkGray;
             PasswordTxt.PlaceholderText = "Password";
             PasswordTxt.SelectedText = "";
-            PasswordTxt.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            PasswordTxt.ShadowDecoration.CustomizableEdges = customizableEdges4;
             PasswordTxt.Size = new Size(331, 41);
             PasswordTxt.TabIndex = 57;
             // 
@@ -207,7 +208,7 @@
             // 
             CpwTxt.BorderColor = Color.LightGray;
             CpwTxt.BorderRadius = 20;
-            CpwTxt.CustomizableEdges = customizableEdges15;
+            CpwTxt.CustomizableEdges = customizableEdges5;
             CpwTxt.DefaultText = "";
             CpwTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             CpwTxt.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -223,7 +224,7 @@
             CpwTxt.PlaceholderForeColor = Color.DarkGray;
             CpwTxt.PlaceholderText = "Confirm Password";
             CpwTxt.SelectedText = "";
-            CpwTxt.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            CpwTxt.ShadowDecoration.CustomizableEdges = customizableEdges6;
             CpwTxt.Size = new Size(331, 41);
             CpwTxt.TabIndex = 57;
             // 
@@ -231,7 +232,7 @@
             // 
             EmailTxt.BorderColor = Color.LightGray;
             EmailTxt.BorderRadius = 20;
-            EmailTxt.CustomizableEdges = customizableEdges17;
+            EmailTxt.CustomizableEdges = customizableEdges7;
             EmailTxt.DefaultText = "";
             EmailTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             EmailTxt.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -247,7 +248,7 @@
             EmailTxt.PlaceholderForeColor = Color.DarkGray;
             EmailTxt.PlaceholderText = "Email";
             EmailTxt.SelectedText = "";
-            EmailTxt.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            EmailTxt.ShadowDecoration.CustomizableEdges = customizableEdges8;
             EmailTxt.Size = new Size(331, 41);
             EmailTxt.TabIndex = 57;
             // 
@@ -257,7 +258,7 @@
             SignUpBtn.BorderRadius = 25;
             SignUpBtn.BorderThickness = 1;
             SignUpBtn.CustomBorderColor = Color.FromArgb(255, 132, 0);
-            SignUpBtn.CustomizableEdges = customizableEdges19;
+            SignUpBtn.CustomizableEdges = customizableEdges9;
             SignUpBtn.DisabledState.BorderColor = Color.DarkGray;
             SignUpBtn.DisabledState.CustomBorderColor = Color.DarkGray;
             SignUpBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -269,11 +270,11 @@
             SignUpBtn.ForeColor = Color.FromArgb(255, 132, 0);
             SignUpBtn.Location = new Point(108, 422);
             SignUpBtn.Name = "SignUpBtn";
-            SignUpBtn.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            SignUpBtn.ShadowDecoration.CustomizableEdges = customizableEdges10;
             SignUpBtn.Size = new Size(159, 43);
             SignUpBtn.TabIndex = 58;
             SignUpBtn.Text = "Sign Up";
-            SignUpBtn.Click += this.SignUpBtn_Click;
+            SignUpBtn.Click += SignUpBtn_Click;
             // 
             // FrmSignup
             // 
