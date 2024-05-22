@@ -29,6 +29,11 @@ namespace GradingSystem.frm_Collection
             MessageBox.Show("Login success");
         }
 
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void MovementPanel_MouseDown(object sender, MouseEventArgs e)
         {
             drag = true;
@@ -130,6 +135,7 @@ namespace GradingSystem.frm_Collection
                         MessageBox.Show("Sign up failed");
                     }
                 }
+            }
         }
     }
 }
