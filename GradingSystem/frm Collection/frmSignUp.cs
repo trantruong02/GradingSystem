@@ -23,10 +23,6 @@ namespace GradingSystem.frm_Collection
             InitializeComponent();
         }
 
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
@@ -81,7 +77,7 @@ namespace GradingSystem.frm_Collection
             if (TeacherRbtn.Checked) { return "teacher"; } else { return "student"; }
         }
 
-        private static void ChangeBorder(Guna2TextBox textBox) 
+        private static void ChangeBorder(Guna2TextBox textBox)
         {
             textBox.BorderColor = Color.FromArgb(243, 36, 36);
         }
@@ -134,7 +130,6 @@ namespace GradingSystem.frm_Collection
                         MessageBox.Show("Sign up failed");
                     }
                 }
-            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using Guna.UI2.WinForms;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Net.Mail;
 
 namespace GradingSystem
 {

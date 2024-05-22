@@ -106,4 +106,4 @@ insert into StudentAnswers (student_id, EID, QID, SelectedOption, MarkObtained) 
 insert into assignment (exam_id, student_id) values (1, 4), (2, 5), (3, 6);
 
 select username, password from Users where role = 'teacher';
-select * from Users
+select * from Users where user_id = 1;

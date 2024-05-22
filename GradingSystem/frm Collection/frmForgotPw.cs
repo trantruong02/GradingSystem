@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Guna.UI2.WinForms;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,11 +11,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Net.Mail;
+using System.Net;
 
 namespace GradingSystem.frm_Collection
 {
     public partial class frmForgotPw : Form
     {
+        string randomcode;
+        public static string to;
         public frmForgotPw()
         {
             InitializeComponent();
@@ -27,51 +32,36 @@ namespace GradingSystem.frm_Collection
             loginForm.ShowDialog();
             this.Close();
         }
-        private static bool IsTextboxEmpty(TextBox textBox)
+
+        private static bool IsTextboxEmpty(Guna2TextBox textBox)
         {
             return string.IsNullOrEmpty(textBox.Text);
         }
 
-        private void SignUpBtn_Click(object sender, EventArgs e)
+        private int GeneratePassword()
         {
-            string username = UsernameTxt.Text;
-            string NewPw = NpwTxt.Text;
-            string ConfirmPassword = CpwTxt.Text;
-            if (IsTextboxEmpty(UsernameTxt) || IsTextboxEmpty(CpwTxt) || IsTextboxEmpty(NpwTxt))
-            {
-                MessageBox.Show("Please fill out all information in all fields");
-                return;
-            }
+            Random rnd = new();
+            int random_password = rnd.Next(999999);
+            return random_password;
+        }
 
-            if (ConfirmPassword != NewPw)
-            {
-                MessageBox.Show("Your password is not correct");
-                return;
-            }
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            
+        }
 
-            using (SqlConnection con = new ("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
-            {
-                con.Open();
-                string query = "update Teachers set password = @password where username = @username";
+        private void Sendcode_Click(object sender, EventArgs e)
+        {
+            int code = GeneratePassword();
+            string email = EmailTxt.Text;
+            MessageBox.Show($"This is a password for {email} " +
+                $"Your new password is {code}. Do not share to anyone");
 
-                using (SqlCommand cmd = new (query, con))
-                {
-                    cmd.Parameters.AddWithValue("username", username);
-                    cmd.Parameters.AddWithValue ("password", NewPw);
+        }
 
-                    // thuc thi truy van 
-                    int result = cmd.ExecuteNonQuery();
-
-                    if (result == 1)
-                    {
-                        MessageBox.Show("Sign up success");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sign up failed");
-                    }
-                }
-            }
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

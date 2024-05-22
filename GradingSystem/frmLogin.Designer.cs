@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             Label lblLogin;
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             Exit = new Label();
             ForgotPw = new Label();
@@ -115,7 +115,7 @@
             guna2Button1.BorderThickness = 1;
             guna2Button1.CustomBorderColor = Color.FromArgb(255, 152, 0);
             guna2Button1.CustomBorderThickness = new Padding(1);
-            guna2Button1.CustomizableEdges = customizableEdges7;
+            guna2Button1.CustomizableEdges = customizableEdges1;
             guna2Button1.DisabledState.BorderColor = Color.DarkGray;
             guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -130,7 +130,7 @@
             guna2Button1.Name = "guna2Button1";
             guna2Button1.PressedColor = Color.FromArgb(245, 136, 64);
             guna2Button1.PressedDepth = 5;
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2Button1.Size = new Size(129, 35);
             guna2Button1.TabIndex = 35;
             guna2Button1.Text = "LOGIN";
@@ -141,7 +141,7 @@
             txtUsername.AutoRoundedCorners = true;
             txtUsername.BorderColor = Color.Silver;
             txtUsername.BorderRadius = 19;
-            txtUsername.CustomizableEdges = customizableEdges9;
+            txtUsername.CustomizableEdges = customizableEdges3;
             txtUsername.DefaultText = "";
             txtUsername.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtUsername.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -158,7 +158,7 @@
             txtUsername.PlaceholderForeColor = Color.DimGray;
             txtUsername.PlaceholderText = "Username";
             txtUsername.SelectedText = "";
-            txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtUsername.Size = new Size(331, 41);
             txtUsername.TabIndex = 36;
             // 
@@ -167,7 +167,7 @@
             txtPassword.AutoRoundedCorners = true;
             txtPassword.BorderColor = Color.Silver;
             txtPassword.BorderRadius = 19;
-            txtPassword.CustomizableEdges = customizableEdges11;
+            txtPassword.CustomizableEdges = customizableEdges5;
             txtPassword.DefaultText = "";
             txtPassword.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtPassword.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -180,11 +180,11 @@
             txtPassword.Location = new Point(29, 207);
             txtPassword.Margin = new Padding(4);
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '\0';
+            txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderForeColor = Color.DimGray;
             txtPassword.PlaceholderText = "Password";
             txtPassword.SelectedText = "";
-            txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtPassword.Size = new Size(331, 41);
             txtPassword.TabIndex = 36;
             // 

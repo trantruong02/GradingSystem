@@ -28,75 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            NpwTxt = new TextBox();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             BackLbl = new Label();
-            UsernameTxt = new TextBox();
-            CpwTxt = new TextBox();
-            SignUpBtn = new Button();
             lblSIGNIN = new Label();
             Panel1 = new Panel();
             Exit = new Label();
+            Token = new Guna.UI2.WinForms.Guna2TextBox();
+            Sendcode = new Guna.UI2.WinForms.Guna2Button();
+            Username = new Guna.UI2.WinForms.Guna2TextBox();
+            Reset = new Guna.UI2.WinForms.Guna2Button();
+            EmailTxt = new Guna.UI2.WinForms.Guna2TextBox();
             Panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // NpwTxt
-            // 
-            NpwTxt.Font = new Font("Bookman Old Style", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NpwTxt.Location = new Point(37, 258);
-            NpwTxt.Margin = new Padding(4, 3, 4, 3);
-            NpwTxt.Name = "NpwTxt";
-            NpwTxt.PlaceholderText = "New password";
-            NpwTxt.Size = new Size(331, 27);
-            NpwTxt.TabIndex = 53;
             // 
             // BackLbl
             // 
             BackLbl.AutoSize = true;
             BackLbl.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BackLbl.ForeColor = Color.DarkGray;
-            BackLbl.Location = new Point(132, 469);
+            BackLbl.Location = new Point(137, 443);
             BackLbl.Margin = new Padding(4, 0, 4, 0);
             BackLbl.Name = "BackLbl";
             BackLbl.Size = new Size(140, 20);
             BackLbl.TabIndex = 52;
             BackLbl.Text = "Back to LOGIN";
             BackLbl.Click += BackLbl_Click;
-            // 
-            // UsernameTxt
-            // 
-            UsernameTxt.Font = new Font("Bookman Old Style", 10.8F);
-            UsernameTxt.Location = new Point(37, 197);
-            UsernameTxt.Margin = new Padding(4, 3, 4, 3);
-            UsernameTxt.Name = "UsernameTxt";
-            UsernameTxt.PlaceholderText = "Username";
-            UsernameTxt.Size = new Size(331, 29);
-            UsernameTxt.TabIndex = 48;
-            // 
-            // CpwTxt
-            // 
-            CpwTxt.Font = new Font("Bookman Old Style", 10.8F);
-            CpwTxt.Location = new Point(37, 322);
-            CpwTxt.Margin = new Padding(5, 3, 5, 3);
-            CpwTxt.Name = "CpwTxt";
-            CpwTxt.PlaceholderText = "Confirm your password";
-            CpwTxt.Size = new Size(331, 29);
-            CpwTxt.TabIndex = 47;
-            // 
-            // SignUpBtn
-            // 
-            SignUpBtn.BackColor = Color.White;
-            SignUpBtn.FlatAppearance.BorderColor = Color.FromArgb(255, 152, 0);
-            SignUpBtn.FlatStyle = FlatStyle.Flat;
-            SignUpBtn.Font = new Font("Bookman Old Style", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SignUpBtn.ForeColor = Color.FromArgb(255, 152, 0);
-            SignUpBtn.Location = new Point(132, 393);
-            SignUpBtn.Margin = new Padding(5, 3, 5, 3);
-            SignUpBtn.Name = "SignUpBtn";
-            SignUpBtn.Size = new Size(140, 35);
-            SignUpBtn.TabIndex = 46;
-            SignUpBtn.Text = "RESET";
-            SignUpBtn.UseVisualStyleBackColor = false;
-            SignUpBtn.Click += SignUpBtn_Click;
             // 
             // lblSIGNIN
             // 
@@ -132,17 +97,133 @@
             Exit.Size = new Size(29, 26);
             Exit.TabIndex = 41;
             Exit.Text = "X";
+            Exit.Click += Exit_Click;
+            // 
+            // Token
+            // 
+            Token.BorderColor = Color.DarkGray;
+            Token.BorderRadius = 20;
+            Token.CustomizableEdges = customizableEdges11;
+            Token.DefaultText = "";
+            Token.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            Token.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            Token.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            Token.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            Token.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            Token.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Token.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            Token.Location = new Point(37, 283);
+            Token.Margin = new Padding(4);
+            Token.Name = "Token";
+            Token.PasswordChar = '*';
+            Token.PlaceholderForeColor = Color.DimGray;
+            Token.PlaceholderText = "New password";
+            Token.SelectedText = "";
+            Token.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            Token.Size = new Size(331, 41);
+            Token.TabIndex = 54;
+            // 
+            // Sendcode
+            // 
+            Sendcode.BorderColor = Color.FromArgb(255, 152, 0);
+            Sendcode.BorderRadius = 20;
+            Sendcode.BorderThickness = 1;
+            Sendcode.CustomizableEdges = customizableEdges13;
+            Sendcode.DisabledState.BorderColor = Color.DarkGray;
+            Sendcode.DisabledState.CustomBorderColor = Color.DarkGray;
+            Sendcode.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Sendcode.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Sendcode.FillColor = Color.Transparent;
+            Sendcode.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Sendcode.ForeColor = Color.Black;
+            Sendcode.Location = new Point(263, 233);
+            Sendcode.Name = "Sendcode";
+            Sendcode.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            Sendcode.Size = new Size(105, 42);
+            Sendcode.TabIndex = 55;
+            Sendcode.Text = "Send";
+            Sendcode.Click += Sendcode_Click;
+            // 
+            // Username
+            // 
+            Username.BorderColor = Color.DarkGray;
+            Username.BorderRadius = 20;
+            Username.CustomizableEdges = customizableEdges15;
+            Username.DefaultText = "";
+            Username.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            Username.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            Username.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            Username.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            Username.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            Username.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Username.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            Username.Location = new Point(37, 185);
+            Username.Margin = new Padding(4);
+            Username.Name = "Username";
+            Username.PasswordChar = '\0';
+            Username.PlaceholderForeColor = Color.DimGray;
+            Username.PlaceholderText = "Username";
+            Username.SelectedText = "";
+            Username.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            Username.Size = new Size(331, 41);
+            Username.TabIndex = 54;
+            // 
+            // Reset
+            // 
+            Reset.BorderColor = Color.FromArgb(255, 152, 0);
+            Reset.BorderRadius = 20;
+            Reset.BorderThickness = 1;
+            Reset.CustomizableEdges = customizableEdges17;
+            Reset.DisabledState.BorderColor = Color.DarkGray;
+            Reset.DisabledState.CustomBorderColor = Color.DarkGray;
+            Reset.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Reset.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Reset.FillColor = Color.Transparent;
+            Reset.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Reset.ForeColor = Color.FromArgb(255, 152, 0);
+            Reset.Location = new Point(151, 371);
+            Reset.Name = "Reset";
+            Reset.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            Reset.Size = new Size(105, 42);
+            Reset.TabIndex = 55;
+            Reset.Text = "RESET";
+            Reset.Click += Reset_Click;
+            // 
+            // EmailTxt
+            // 
+            EmailTxt.BorderColor = Color.DarkGray;
+            EmailTxt.BorderRadius = 20;
+            EmailTxt.CustomizableEdges = customizableEdges19;
+            EmailTxt.DefaultText = "";
+            EmailTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            EmailTxt.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            EmailTxt.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            EmailTxt.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            EmailTxt.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            EmailTxt.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EmailTxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            EmailTxt.Location = new Point(37, 234);
+            EmailTxt.Margin = new Padding(4);
+            EmailTxt.Name = "EmailTxt";
+            EmailTxt.PasswordChar = '\0';
+            EmailTxt.PlaceholderForeColor = Color.DimGray;
+            EmailTxt.PlaceholderText = "Emai";
+            EmailTxt.SelectedText = "";
+            EmailTxt.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            EmailTxt.Size = new Size(219, 41);
+            EmailTxt.TabIndex = 54;
             // 
             // frmForgotPw
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(399, 504);
-            Controls.Add(NpwTxt);
+            ClientSize = new Size(399, 481);
+            Controls.Add(Reset);
+            Controls.Add(Sendcode);
+            Controls.Add(EmailTxt);
+            Controls.Add(Username);
+            Controls.Add(Token);
             Controls.Add(BackLbl);
-            Controls.Add(UsernameTxt);
-            Controls.Add(CpwTxt);
-            Controls.Add(SignUpBtn);
             Controls.Add(lblSIGNIN);
             Controls.Add(Panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -161,9 +242,13 @@
         private Label BackLbl;
         private TextBox UsernameTxt;
         private TextBox CpwTxt;
-        private Button SignUpBtn;
         private Label lblSIGNIN;
         private Panel Panel1;
         private Label Exit;
+        private Guna.UI2.WinForms.Guna2TextBox Token;
+        private Guna.UI2.WinForms.Guna2Button Sendcode;
+        private Guna.UI2.WinForms.Guna2TextBox Username;
+        private Guna.UI2.WinForms.Guna2Button Reset;
+        private Guna.UI2.WinForms.Guna2TextBox EmailTxt;
     }
 }

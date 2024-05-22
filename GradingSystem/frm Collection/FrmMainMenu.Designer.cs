@@ -37,8 +37,10 @@
             DashboardBtn = new FontAwesome.Sharp.IconButton();
             QuestionsBtn = new FontAwesome.Sharp.IconButton();
             MainPanel = new Panel();
+            label1 = new Label();
             panel1 = new Panel();
             MenuPanel.SuspendLayout();
+            MainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MenuPanel
@@ -199,11 +201,21 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.White;
+            MainPanel.Controls.Add(label1);
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(214, 43);
             MainPanel.Name = "MainPanel";
             MainPanel.Size = new Size(1025, 607);
             MainPanel.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(425, 162);
+            label1.Name = "label1";
+            label1.Size = new Size(60, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Menu";
             // 
             // panel1
             // 
@@ -228,6 +240,9 @@
             Name = "frmMainMenu";
             StartPosition = FormStartPosition.CenterScreen;
             MenuPanel.ResumeLayout(false);
+            MainPanel.ResumeLayout(false);
+            MainPanel.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -241,5 +256,6 @@
         private FontAwesome.Sharp.IconButton LogoutBtn;
         private FontAwesome.Sharp.IconButton DashboardBtn;
         private Panel MainPanel;
+        private Label label1;
     }
 }
