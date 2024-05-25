@@ -32,27 +32,93 @@ namespace GradingSystem.Class_collection
             return null;
         }
 
-        public string GetRoleFromUsername(string username)
+        private string GetEntryFromUsername(string entry, string username)
         {
-            string? role = "";
+            string? entryData = "";
+            entry = entry.ToLower();
 
             using (SqlConnection connection = new(connectionString))
             {
                 connection.Open();
-                string query = "select role from Users where username = @username";
+                string query = "select " + entry + " from Users where username = @username";
                 using (SqlCommand command = new(query, connection))
                 {
                     command.Parameters.AddWithValue("@username", username);
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {
-                        role = reader["role"].ToString();
+                        entryData = reader[entry].ToString();
                     }
                     reader.Close();
                 }
             }
 
-            return role ?? "";
+            return entryData ?? "";
+        }
+
+        public string GetIdFromUsername(string username)
+        {
+            return GetEntryFromUsername("user_id", username);
+        }
+
+        public string GetRoleFromUsername(string username)
+        {
+            return GetEntryFromUsername("role", username);
+        }
+
+        public string GetEmailFromUsername(string username)
+        {
+            return GetEntryFromUsername("email", username);
+        }
+
+        public bool Update(string userId, string? username = null, string? password = null, string? email = null)
+        {
+            // MUST have equal length
+            bool[] shouldUpdateTheseParams = new bool[3]
+            {
+                username != null, password != null, email != null
+            };
+            string[] paramsToUpdate = new string[3]
+            {
+                "username = @username", "password = @password", "email = @email"
+            };
+
+            StringBuilder queryBuilder = new StringBuilder();
+            string separator = "";
+            for (int i = 0; i < shouldUpdateTheseParams.Length; i++)
+            {
+                bool shouldUpdate = shouldUpdateTheseParams[i];
+                if (shouldUpdate)
+                {
+                    queryBuilder.Append(separator);
+                    queryBuilder.Append(paramsToUpdate[i]);
+                    separator = ", ";
+                }
+            }
+
+            if (queryBuilder.Length > 0)
+            {
+                int result = 0;
+                using (SqlConnection connection = new(connectionString))
+                {
+                    connection.Open();
+                    string query = "update Users set " + queryBuilder.ToString() + " where user_id = @ID";
+                    using (SqlCommand command = new(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", userId);
+                        if (username != null) command.Parameters.AddWithValue("@username", username);
+                        if (password != null) command.Parameters.AddWithValue("@password", password);
+                        if (email != null) command.Parameters.AddWithValue("@email", email);
+                        result = command.ExecuteNonQuery();
+                    }
+                }
+
+                if (result == 1) return true;
+            } else
+            {
+                Console.WriteLine("A User.Update() method was called with no parameters. Nothing was updated.");
+            }
+            return false;
         }
 
         /*public int Create(string username, string password, string email)
@@ -120,28 +186,6 @@ namespace GradingSystem.Class_collection
 
             return false;
 
-        }
-
-        public void Update(string id, string firstName, string lastName, string username, string password, string email, DateTime dateOfBirth, string phoneNumber)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = "UPDATE Teachers SET FirstName = @FirstName, LastName = @LastName, Username = @Username, Password = @Password, " +
-                               "Email = @Email, DateOfBirth = @DateOfBirth, PhoneNumber = @PhoneNumber WHERE ID = @ID";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ID", id);
-                    command.Parameters.AddWithValue("@FirstName", firstName);
-                    command.Parameters.AddWithValue("@LastName", lastName);
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password);
-                    command.Parameters.AddWithValue("@Email", email);
-                    command.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-                    command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-                    command.ExecuteNonQuery();
-                }
-            }
         }
 
         public void Delete(string id)

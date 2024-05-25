@@ -38,6 +38,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             BackLbl = new Label();
             lblSIGNIN = new Label();
             Panel1 = new Panel();
@@ -47,6 +50,8 @@
             Username = new Guna.UI2.WinForms.Guna2TextBox();
             Reset = new Guna.UI2.WinForms.Guna2Button();
             EmailTxt = new Guna.UI2.WinForms.Guna2TextBox();
+            NewPw = new Guna.UI2.WinForms.Guna2TextBox();
+            PreviewPw = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             Panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,7 +60,7 @@
             BackLbl.AutoSize = true;
             BackLbl.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BackLbl.ForeColor = Color.DarkGray;
-            BackLbl.Location = new Point(120, 332);
+            BackLbl.Location = new Point(120, 373);
             BackLbl.Margin = new Padding(4, 0, 4, 0);
             BackLbl.Name = "BackLbl";
             BackLbl.Size = new Size(119, 19);
@@ -114,14 +119,16 @@
             Token.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             Token.Location = new Point(32, 212);
             Token.Margin = new Padding(4, 3, 4, 3);
+            Token.MaxLength = 255;
             Token.Name = "Token";
-            Token.PasswordChar = '*';
+            Token.PasswordChar = '\0';
             Token.PlaceholderForeColor = Color.DimGray;
-            Token.PlaceholderText = "New password";
+            Token.PlaceholderText = "Verification Code";
             Token.SelectedText = "";
             Token.ShadowDecoration.CustomizableEdges = customizableEdges2;
             Token.Size = new Size(290, 31);
             Token.TabIndex = 54;
+            Token.TextChanged += Token_TextChanged;
             // 
             // Sendcode
             // 
@@ -168,6 +175,7 @@
             Username.ShadowDecoration.CustomizableEdges = customizableEdges6;
             Username.Size = new Size(290, 31);
             Username.TabIndex = 54;
+            Username.TextChanged += Username_TextChanged;
             // 
             // Reset
             // 
@@ -182,7 +190,7 @@
             Reset.FillColor = Color.Transparent;
             Reset.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Reset.ForeColor = Color.FromArgb(255, 152, 0);
-            Reset.Location = new Point(132, 278);
+            Reset.Location = new Point(132, 319);
             Reset.Margin = new Padding(3, 2, 3, 2);
             Reset.Name = "Reset";
             Reset.ShadowDecoration.CustomizableEdges = customizableEdges8;
@@ -214,12 +222,55 @@
             EmailTxt.ShadowDecoration.CustomizableEdges = customizableEdges10;
             EmailTxt.Size = new Size(192, 31);
             EmailTxt.TabIndex = 54;
+            EmailTxt.TextChanged += EmailTxt_TextChanged;
+            // 
+            // NewPw
+            // 
+            NewPw.BorderColor = Color.DarkGray;
+            NewPw.BorderRadius = 20;
+            NewPw.CustomizableEdges = customizableEdges11;
+            NewPw.DefaultText = "";
+            NewPw.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            NewPw.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            NewPw.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            NewPw.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            NewPw.Enabled = false;
+            NewPw.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            NewPw.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            NewPw.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            NewPw.Location = new Point(32, 249);
+            NewPw.Margin = new Padding(4, 3, 4, 3);
+            NewPw.Name = "NewPw";
+            NewPw.PasswordChar = '*';
+            NewPw.PlaceholderForeColor = Color.DimGray;
+            NewPw.PlaceholderText = "New password";
+            NewPw.SelectedText = "";
+            NewPw.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            NewPw.Size = new Size(247, 31);
+            NewPw.TabIndex = 56;
+            NewPw.TextChanged += NewPw_TextChanged;
+            // 
+            // PreviewPw
+            // 
+            PreviewPw.CheckedState.Image = Properties.Resources.show_pw;
+            PreviewPw.Enabled = false;
+            PreviewPw.Image = Properties.Resources.hide_pw;
+            PreviewPw.ImageOffset = new Point(0, 0);
+            PreviewPw.ImageRotate = 0F;
+            PreviewPw.Location = new Point(286, 249);
+            PreviewPw.Name = "PreviewPw";
+            PreviewPw.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            PreviewPw.Size = new Size(24, 31);
+            PreviewPw.TabIndex = 57;
+            PreviewPw.CheckedChanged += PreviewPw_CheckedChanged;
             // 
             // frmForgotPw
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(349, 361);
+            ClientSize = new Size(349, 402);
+            Controls.Add(PreviewPw);
+            Controls.Add(NewPw);
             Controls.Add(Reset);
             Controls.Add(Sendcode);
             Controls.Add(EmailTxt);
@@ -253,5 +304,7 @@
         private Guna.UI2.WinForms.Guna2TextBox Username;
         private Guna.UI2.WinForms.Guna2Button Reset;
         private Guna.UI2.WinForms.Guna2TextBox EmailTxt;
+        private Guna.UI2.WinForms.Guna2TextBox NewPw;
+        private Guna.UI2.WinForms.Guna2ImageCheckBox PreviewPw;
     }
 }
