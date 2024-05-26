@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+using GradingSystem.Class_collection;
 
 namespace GradingSystem.frm_Collection
 {
@@ -110,6 +111,23 @@ namespace GradingSystem.frm_Collection
                 return;
             }
 
+            role = SelectedRole();
+            IUser newUser = new User(
+                "Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True",
+                role);
+            int result = newUser.Create(username, password, email);
+
+            // thuc thi truy van 
+            if (result == 1)
+            {
+                MessageBox.Show("Sign up success");
+            }
+            else
+            {
+                MessageBox.Show("Sign up failed");
+            }
+
+            /*
             using (SqlConnection con = new("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
             {
                 con.Open();
@@ -136,6 +154,7 @@ namespace GradingSystem.frm_Collection
                     }
                 }
             }
+            */
         }
     }
 }

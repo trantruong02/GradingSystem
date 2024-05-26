@@ -17,6 +17,7 @@ using System.Text.RegularExpressions;
 
 using GradingSystem.Class_collection;
 using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics;
 
 namespace GradingSystem.frm_Collection
 {
@@ -25,7 +26,7 @@ namespace GradingSystem.frm_Collection
         string verifyCode;
         public static string to;
 
-        private User userObj = new User("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True");
+        private string connectionString = "Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True";
 
         public frmForgotPw()
         {
@@ -74,7 +75,7 @@ namespace GradingSystem.frm_Collection
 
         private bool IsEmailBelongToUsername(string username, string email)
         {
-            string emailFromUser = userObj.GetEmailFromUsername(username);
+            string emailFromUser = User.GetEmailFromUsername(connectionString, username);
             if (emailFromUser != email)
             {
                 MessageBox.Show($"User does not exist or email does not belong to user. Please check and try again later.", "Error");
@@ -114,14 +115,16 @@ namespace GradingSystem.frm_Collection
             string newpw = NewPw.Text;
             if (IsEmailBelongToUsername(username, email))
             {
-                string userId = userObj.GetIdFromUsername(username);
+                string userId = User.GetIdFromUsername(connectionString, username);
+                string role = User.GetRoleFromUsername(connectionString, username);
 
                 if (userId.IsNullOrEmpty())
                 {
                     MessageBox.Show("User not found.");
                     return;
                 }
-                bool success = userObj.Update(userId, password: newpw);
+                IUser user = new User(connectionString, role);
+                bool success = user.Update(userId, password: newpw);
 
                 if (success)
                 {
@@ -213,7 +216,7 @@ namespace GradingSystem.frm_Collection
                 smtpClient.EnableSsl = true;
                 smtpClient.Send(mail);
 
-                Console.WriteLine("Mail sent");
+                Trace.WriteLine("Mail sent");
                 return true;
             }
             catch (Exception ex)
