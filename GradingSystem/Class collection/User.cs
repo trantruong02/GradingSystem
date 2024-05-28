@@ -7,91 +7,95 @@ using System.Data;
 
 using Microsoft.Data.SqlClient;
 using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace GradingSystem.Class_collection
 {
-    public class User
+    // Proxy class for all User classes.
+    // Static methods are used for operations involving all users from all roles.
+    // For role-specific operations, refer to BaseUser.cs
+    public class User : IUser
     {
-        protected string connectionString;
+        // 1st part: Act as proxy for a user role
+        private BaseUser user;
+        public BaseUser ConstructedUser => user;
+        public string RoleName => user.RoleName;
 
-        public User(string connectionString)
+        public User(string connectionString, string roleName)
         {
-            this.connectionString = connectionString;
-        }
-
-        public IUser? FromRole(string role)
-        {
-            switch (role)
+            switch (roleName.ToLower())
             {
                 case "teacher":
-                    return new Teacher(connectionString);
+                    user = new Teacher(connectionString);
+                    break;
                 case "student":
-                    return new Student(connectionString);
+                    user = new Student(connectionString);
+                    break;
+                default: throw new ArgumentException("Role does not exist");
             }
-            return null;
         }
 
-        public string GetRoleFromUsername(string username)
+        public int Create(string username, string password, string email)
         {
-            string? role = "";
+            return user.Create(username, password, email);
+        }
+
+        public bool Update(string userId, string? username = null, string? password = null, string? email = null)
+        {
+            return user.Update(userId, username, password, email);
+        }
+
+        public void Delete(string userId)
+        {
+            user.Delete(userId);
+        }
+
+        // 2nd part: Static methods for use on user-wide operations;
+        private static string GetEntryFromUsername(string connectionString, string entry, string username)
+        {
+            string? entryData = "";
+            entry = entry.ToLower();
 
             using (SqlConnection connection = new(connectionString))
             {
                 connection.Open();
-                string query = "select role from Users where username = @username";
+                string query = "select " + entry + " from Users where username = @username";
                 using (SqlCommand command = new(query, connection))
                 {
                     command.Parameters.AddWithValue("@username", username);
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
+                    var data = command.ExecuteScalar();
+                    if (data != null)
                     {
-                        role = reader["role"].ToString();
+                        entryData = data.ToString();
                     }
-                    reader.Close();
                 }
             }
 
-            return role ?? "";
+            return entryData ?? "";
         }
 
-        /*public int Create(string username, string password, string email)
+        public static bool UserExists(string connectionString, string username)
         {
-            int result = 0;
-
-            if (SearchUserName(username))
-            {
-                using (SqlConnection connection = new (connectionString))
-                {
-                    connection.Open();
-                    string query = "insert into Users (username, password, email, role) values (@username, @password, @email, @role)";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        this.username = username;
-                        command.Parameters.AddWithValue("@username", username);
-                        this.password = password;
-                        command.Parameters.AddWithValue("@password", password);
-                        this.email = email;
-                        command.Parameters.AddWithValue("@email", email);
-
-                        result = command.ExecuteNonQuery();
-
-                        if (result == 1)
-                        {
-                            MessageBox.Show("Sign up success");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Sign up failed");
-                        }
-                    }
-                }
-            }
-
-
-            return result;
+            return !GetIdFromUsername(connectionString, username).IsNullOrEmpty();
         }
 
+        public static string GetIdFromUsername(string connectionString, string username)
+        {
+            return GetEntryFromUsername(connectionString, "user_id", username);
+        }
+
+        public static string GetRoleFromUsername(string connectionString, string username)
+        {
+            return GetEntryFromUsername(connectionString, "role", username);
+        }
+
+        public static string GetEmailFromUsername(string connectionString, string username)
+        {
+            return GetEntryFromUsername(connectionString, "email", username);
+        }
+
+        /*
         public bool SearchUserName(string username)
         {
 
@@ -110,52 +114,12 @@ namespace GradingSystem.Class_collection
                         return false;
 
                     }
-
-
-
                 }
                 return true;
 
             }
 
-            return false;
-
         }
-
-        public void Update(string id, string firstName, string lastName, string username, string password, string email, DateTime dateOfBirth, string phoneNumber)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = "UPDATE Teachers SET FirstName = @FirstName, LastName = @LastName, Username = @Username, Password = @Password, " +
-                               "Email = @Email, DateOfBirth = @DateOfBirth, PhoneNumber = @PhoneNumber WHERE ID = @ID";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ID", id);
-                    command.Parameters.AddWithValue("@FirstName", firstName);
-                    command.Parameters.AddWithValue("@LastName", lastName);
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password);
-                    command.Parameters.AddWithValue("@Email", email);
-                    command.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-                    command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public void Delete(string id)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = "DELETE FROM Teachers WHERE ID = @ID";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ID", id);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }*/
+        */
     }
 }
