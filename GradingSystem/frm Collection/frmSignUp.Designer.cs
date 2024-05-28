@@ -286,6 +286,139 @@
             RoleLbl.TabIndex = 43;
             RoleLbl.Text = "Role";
             // 
+            // BackLbl
+            // 
+            BackLbl.Anchor = AnchorStyles.None;
+            BackLbl.AutoSize = true;
+            BackLbl.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BackLbl.ForeColor = Color.DarkGray;
+            BackLbl.Location = new Point(127, 536);
+            BackLbl.Margin = new Padding(4, 0, 4, 0);
+            BackLbl.Name = "BackLbl";
+            BackLbl.Size = new Size(140, 20);
+            BackLbl.TabIndex = 50;
+            BackLbl.Text = "Back to LOGIN";
+            BackLbl.Click += BackLbl_Click;
+            // 
+            // guna2TextBox1
+            // 
+            guna2TextBox1.BorderColor = Color.LightGray;
+            guna2TextBox1.BorderRadius = 20;
+            guna2TextBox1.CustomizableEdges = customizableEdges1;
+            guna2TextBox1.DefaultText = "";
+            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Font = new Font("Bookman Old Style", 10.8F);
+            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Location = new Point(32, 191);
+            guna2TextBox1.Margin = new Padding(4);
+            guna2TextBox1.Name = "guna2TextBox1";
+            guna2TextBox1.PasswordChar = '\0';
+            guna2TextBox1.PlaceholderForeColor = Color.DarkGray;
+            guna2TextBox1.PlaceholderText = "Username";
+            guna2TextBox1.SelectedText = "";
+            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2TextBox1.Size = new Size(331, 41);
+            guna2TextBox1.TabIndex = 57;
+            // 
+            // guna2TextBox2
+            // 
+            guna2TextBox2.BorderColor = Color.LightGray;
+            guna2TextBox2.BorderRadius = 20;
+            guna2TextBox2.CustomizableEdges = customizableEdges3;
+            guna2TextBox2.DefaultText = "";
+            guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox2.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox2.Font = new Font("Bookman Old Style", 10.8F);
+            guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox2.Location = new Point(32, 245);
+            guna2TextBox2.Margin = new Padding(4);
+            guna2TextBox2.Name = "guna2TextBox2";
+            guna2TextBox2.PasswordChar = '\0';
+            guna2TextBox2.PlaceholderForeColor = Color.DarkGray;
+            guna2TextBox2.PlaceholderText = "Password";
+            guna2TextBox2.SelectedText = "";
+            guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2TextBox2.Size = new Size(331, 41);
+            guna2TextBox2.TabIndex = 57;
+            // 
+            // guna2TextBox3
+            // 
+            guna2TextBox3.BorderColor = Color.LightGray;
+            guna2TextBox3.BorderRadius = 20;
+            guna2TextBox3.CustomizableEdges = customizableEdges5;
+            guna2TextBox3.DefaultText = "";
+            guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox3.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox3.Font = new Font("Bookman Old Style", 10.8F);
+            guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox3.Location = new Point(32, 302);
+            guna2TextBox3.Margin = new Padding(4);
+            guna2TextBox3.Name = "guna2TextBox3";
+            guna2TextBox3.PasswordChar = '\0';
+            guna2TextBox3.PlaceholderForeColor = Color.DarkGray;
+            guna2TextBox3.PlaceholderText = "Confirm Password";
+            guna2TextBox3.SelectedText = "";
+            guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2TextBox3.Size = new Size(331, 41);
+            guna2TextBox3.TabIndex = 57;
+            // 
+            // guna2TextBox4
+            // 
+            guna2TextBox4.BorderColor = Color.LightGray;
+            guna2TextBox4.BorderRadius = 20;
+            guna2TextBox4.CustomizableEdges = customizableEdges7;
+            guna2TextBox4.DefaultText = "";
+            guna2TextBox4.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox4.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox4.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox4.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox4.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox4.Font = new Font("Bookman Old Style", 10.8F);
+            guna2TextBox4.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox4.Location = new Point(32, 360);
+            guna2TextBox4.Margin = new Padding(4);
+            guna2TextBox4.Name = "guna2TextBox4";
+            guna2TextBox4.PasswordChar = '\0';
+            guna2TextBox4.PlaceholderForeColor = Color.DarkGray;
+            guna2TextBox4.PlaceholderText = "Email";
+            guna2TextBox4.SelectedText = "";
+            guna2TextBox4.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2TextBox4.Size = new Size(331, 41);
+            guna2TextBox4.TabIndex = 57;
+            // 
+            // guna2GradientButton1
+            // 
+            guna2GradientButton1.BorderColor = Color.FromArgb(255, 132, 0);
+            guna2GradientButton1.BorderRadius = 25;
+            guna2GradientButton1.BorderThickness = 1;
+            guna2GradientButton1.CustomBorderColor = Color.FromArgb(255, 132, 0);
+            guna2GradientButton1.CustomizableEdges = customizableEdges9;
+            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2GradientButton1.FillColor = Color.White;
+            guna2GradientButton1.FillColor2 = Color.White;
+            guna2GradientButton1.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2GradientButton1.ForeColor = Color.FromArgb(255, 132, 0);
+            guna2GradientButton1.Location = new Point(108, 422);
+            guna2GradientButton1.Name = "guna2GradientButton1";
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2GradientButton1.Size = new Size(159, 43);
+            guna2GradientButton1.TabIndex = 58;
+            guna2GradientButton1.Text = "Sign Up";
+            // 
             // FrmSignup
             // 
             AutoScaleDimensions = new SizeF(13F, 23F);

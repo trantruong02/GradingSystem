@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            guna2CustomGradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
+            QuestionPageLbl = new Label();
+            EditBtn = new Guna.UI2.WinForms.Guna2Button();
+            SaveBtn = new Guna.UI2.WinForms.Guna2Button();
+            ExportBtn = new Guna.UI2.WinForms.Guna2Button();
+            listView1 = new ListView();
+            Question = new ColumnHeader();
+            Option1 = new ColumnHeader();
+            Option2 = new ColumnHeader();
+            Option3 = new ColumnHeader();
+            Option4 = new ColumnHeader();
+            Answer = new ColumnHeader();
+            Point = new ColumnHeader();
             SuspendLayout();
             // 
             // guna2CustomGradientPanel2
@@ -119,26 +119,128 @@
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
+            // EditBtn
+            // 
+            EditBtn.BorderColor = Color.FromArgb(34, 102, 141);
+            EditBtn.BorderRadius = 20;
+            EditBtn.BorderThickness = 1;
+            EditBtn.CustomizableEdges = customizableEdges13;
+            EditBtn.DisabledState.BorderColor = Color.DarkGray;
+            EditBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            EditBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            EditBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            EditBtn.FillColor = Color.Transparent;
+            EditBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            EditBtn.ForeColor = Color.FromArgb(34, 102, 141);
+            EditBtn.Location = new Point(12, 696);
+            EditBtn.Name = "EditBtn";
+            EditBtn.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            EditBtn.Size = new Size(108, 39);
+            EditBtn.TabIndex = 1;
+            EditBtn.Text = "Edit";
+            // 
+            // SaveBtn
+            // 
+            SaveBtn.BorderColor = Color.FromArgb(34, 102, 141);
+            SaveBtn.BorderRadius = 20;
+            SaveBtn.BorderThickness = 1;
+            SaveBtn.CustomizableEdges = customizableEdges15;
+            SaveBtn.DisabledState.BorderColor = Color.DarkGray;
+            SaveBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            SaveBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            SaveBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            SaveBtn.FillColor = Color.Transparent;
+            SaveBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaveBtn.ForeColor = Color.FromArgb(34, 102, 141);
+            SaveBtn.Location = new Point(126, 696);
+            SaveBtn.Name = "SaveBtn";
+            SaveBtn.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            SaveBtn.Size = new Size(108, 39);
+            SaveBtn.TabIndex = 1;
+            SaveBtn.Text = "Save";
+            SaveBtn.Click += SaveBtn_Click;
+            // 
+            // ExportBtn
+            // 
+            ExportBtn.BorderColor = Color.FromArgb(34, 102, 141);
+            ExportBtn.BorderRadius = 20;
+            ExportBtn.BorderThickness = 1;
+            ExportBtn.CustomizableEdges = customizableEdges17;
+            ExportBtn.DisabledState.BorderColor = Color.DarkGray;
+            ExportBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            ExportBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            ExportBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            ExportBtn.FillColor = Color.Transparent;
+            ExportBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ExportBtn.ForeColor = Color.FromArgb(34, 102, 141);
+            ExportBtn.Location = new Point(642, 696);
+            ExportBtn.Name = "ExportBtn";
+            ExportBtn.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            ExportBtn.Size = new Size(108, 39);
+            ExportBtn.TabIndex = 1;
+            ExportBtn.Text = "Export";
+            // 
+            // listView1
+            // 
+            listView1.Columns.AddRange(new ColumnHeader[] { Question, Option1, Option2, Option3, Option4, Answer, Point });
+            listView1.FullRowSelect = true;
+            listView1.GridLines = true;
+            listView1.Location = new Point(12, 125);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(729, 552);
+            listView1.TabIndex = 2;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // Question
+            // 
+            Question.Text = "Question";
+            Question.Width = 200;
+            // 
+            // Option1
+            // 
+            Option1.Text = "A";
+            Option1.Width = 90;
+            // 
+            // Option2
+            // 
+            Option2.Text = "B";
+            Option2.Width = 90;
+            // 
+            // Option3
+            // 
+            Option3.Text = "C";
+            Option3.Width = 90;
+            // 
+            // Option4
+            // 
+            Option4.Text = "D";
+            Option4.Width = 90;
+            // 
+            // Answer
+            // 
+            Answer.Text = "Answer";
+            Answer.Width = 90;
+            // 
+            // Point
+            // 
+            Point.Text = "Point";
+            // 
             // FrmQuestion
             // 
             AutoScaleDimensions = new SizeF(11F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1025, 607);
-            Controls.Add(guna2CustomGradientPanel2);
-            Controls.Add(guna2CustomGradientPanel1);
+            Controls.Add(QuestionPageLbl);
             Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
             Name = "FrmQuestion";
             Text = "Questions";
-            guna2CustomGradientPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel2;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private Label QuestionPageLbl;
     }
 }

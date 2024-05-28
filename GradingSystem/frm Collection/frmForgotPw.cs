@@ -32,27 +32,10 @@ namespace GradingSystem.frm_Collection
             return string.IsNullOrEmpty(textBox.Text);
         }
 
-        private void SignUpBtn_Click(object sender, EventArgs e)
+        private void Reset_Click(object sender, EventArgs e)
         {
-            string username = UsernameTxt.Text;
-            string NewPw = NpwTxt.Text;
-            string ConfirmPassword = CpwTxt.Text;
-            if (IsTextboxEmpty(UsernameTxt) || IsTextboxEmpty(CpwTxt) || IsTextboxEmpty(NpwTxt))
-            {
-                MessageBox.Show("Please fill out all information in all fields");
-                return;
-            }
-
-            if (ConfirmPassword != NewPw)
-            {
-                MessageBox.Show("Your password is not correct");
-                return;
-            }
-
-            using (SqlConnection con = new ("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
-            {
-                con.Open();
-                string query = "update Teachers set password = @password where username = @username";
+            
+        }
 
                 using (SqlCommand cmd = new (query, con))
                 {
