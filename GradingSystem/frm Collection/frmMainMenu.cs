@@ -114,7 +114,7 @@ namespace GradingSystem.frm_Collection
             ActiveButton(sender, RGBColors.color3);
 
             this.MainPanel.Controls.Clear();
-            FrmQuestion frmQues = new()
+            frmQuestion frmQues = new()
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,

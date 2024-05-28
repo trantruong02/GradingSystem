@@ -112,7 +112,7 @@ namespace GradingSystem
             {
                 if (role == "teacher")
                 {
-                    FrmQuestion question = new();
+                    frmQuestion question = new();
                     question.Show();
                 }
                 else if (role == "student")
