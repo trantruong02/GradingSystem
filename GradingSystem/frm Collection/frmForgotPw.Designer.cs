@@ -96,7 +96,6 @@
             SignUpBtn.TabIndex = 46;
             SignUpBtn.Text = "RESET";
             SignUpBtn.UseVisualStyleBackColor = false;
-            SignUpBtn.Click += SignUpBtn_Click;
             // 
             // lblSIGNIN
             // 

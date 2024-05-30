@@ -35,9 +35,9 @@
             ScoreBtn = new FontAwesome.Sharp.IconButton();
             ExamsBtn = new FontAwesome.Sharp.IconButton();
             DashboardBtn = new FontAwesome.Sharp.IconButton();
-            QuestionsBtn = new FontAwesome.Sharp.IconButton();
-            MainPanel = new Panel();
             panel1 = new Panel();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
+            MainPanel = new Panel();
             MenuPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,9 +47,9 @@
             MenuPanel.Controls.Add(LogoutBtn);
             MenuPanel.Controls.Add(ContactBtn);
             MenuPanel.Controls.Add(ScoreBtn);
+            MenuPanel.Controls.Add(iconButton1);
             MenuPanel.Controls.Add(ExamsBtn);
             MenuPanel.Controls.Add(DashboardBtn);
-            MenuPanel.Controls.Add(QuestionsBtn);
             MenuPanel.Dock = DockStyle.Left;
             MenuPanel.Location = new Point(0, 0);
             MenuPanel.Name = "MenuPanel";
@@ -178,39 +178,6 @@
             DashboardBtn.UseVisualStyleBackColor = false;
             DashboardBtn.Click += DashboardBtn_Click;
             // 
-            // QuestionsBtn
-            // 
-            QuestionsBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            QuestionsBtn.BackColor = Color.FromArgb(255, 132, 0);
-            QuestionsBtn.FlatAppearance.BorderSize = 0;
-            QuestionsBtn.FlatStyle = FlatStyle.Flat;
-            QuestionsBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
-            QuestionsBtn.ForeColor = Color.Black;
-            QuestionsBtn.IconChar = FontAwesome.Sharp.IconChar.FileCirclePlus;
-            QuestionsBtn.IconColor = Color.Black;
-            QuestionsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            QuestionsBtn.IconSize = 40;
-            QuestionsBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            QuestionsBtn.Location = new Point(0, 123);
-            QuestionsBtn.Name = "QuestionsBtn";
-            QuestionsBtn.Padding = new Padding(10, 0, 20, 0);
-            QuestionsBtn.Size = new Size(214, 60);
-            QuestionsBtn.TabIndex = 11;
-            QuestionsBtn.Text = "  Questions";
-            QuestionsBtn.TextAlign = ContentAlignment.MiddleLeft;
-            QuestionsBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            QuestionsBtn.UseVisualStyleBackColor = false;
-            QuestionsBtn.Click += QuestionsBtn_Click;
-            // 
-            // MainPanel
-            // 
-            MainPanel.BackColor = Color.White;
-            MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(214, 43);
-            MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1166, 747);
-            MainPanel.TabIndex = 3;
-            // 
             // panel1
             // 
             panel1.Dock = DockStyle.Top;
@@ -221,6 +188,39 @@
             panel1.MouseDown += PanelMove_MouseDown;
             panel1.MouseMove += PanelMove_MouseMove;
             panel1.MouseUp += PanelMove_MouseUp;
+            // 
+            // iconButton1
+            // 
+            iconButton1.AccessibleDescription = "Insert, view or delete questions in exams";
+            iconButton1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            iconButton1.BackColor = Color.FromArgb(255, 132, 0);
+            iconButton1.FlatAppearance.BorderSize = 0;
+            iconButton1.FlatStyle = FlatStyle.Flat;
+            iconButton1.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
+            iconButton1.ForeColor = Color.Black;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.FileCircleXmark;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.IconSize = 35;
+            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton1.Location = new Point(0, 126);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Padding = new Padding(10, 0, 20, 0);
+            iconButton1.Size = new Size(214, 60);
+            iconButton1.TabIndex = 12;
+            iconButton1.Text = "   Questions";
+            iconButton1.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += QuestionsBtn_Click;
+            // 
+            // MainPanel
+            // 
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(214, 36);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Size = new Size(1166, 754);
+            MainPanel.TabIndex = 5;
             // 
             // frmMainMenu
             // 
@@ -237,6 +237,7 @@
             Name = "frmMainMenu";
             StartPosition = FormStartPosition.CenterScreen;
             MenuPanel.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -250,6 +251,6 @@
         private FontAwesome.Sharp.IconButton ScoreBtn;
         private FontAwesome.Sharp.IconButton ExamsBtn;
         private FontAwesome.Sharp.IconButton DashboardBtn;
-        private Panel MainPanel;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

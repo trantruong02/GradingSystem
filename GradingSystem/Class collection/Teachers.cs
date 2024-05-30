@@ -83,18 +83,10 @@ namespace GradingSystem.Class_collection
                     {
                         Console.WriteLine("username already exist, choose another one");
                         return false;
-
                     }
-
-
-
                 }
                 return true;
-
             }
-
-            return false;
-
         }
 
         public void Update(string id, string firstName, string lastName, string username, string password, string email, DateTime dateOfBirth, string phoneNumber)

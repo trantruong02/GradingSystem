@@ -36,25 +36,5 @@ namespace GradingSystem.frm_Collection
         {
             
         }
-
-                using (SqlCommand cmd = new (query, con))
-                {
-                    cmd.Parameters.AddWithValue("username", username);
-                    cmd.Parameters.AddWithValue ("password", NewPw);
-
-                    // thuc thi truy van 
-                    int result = cmd.ExecuteNonQuery();
-
-                    if (result == 1)
-                    {
-                        MessageBox.Show("Sign up success");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sign up failed");
-                    }
-                }
-            }
-        }
     }
 }

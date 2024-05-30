@@ -6,7 +6,7 @@ go
 
 -- identity: auto- increament --- tu dong tang 
 create table Users (
-	user_id int primary key identity,
+	UID int primary key identity,
 	username nvarchar(50) not null,
 	password nvarchar(50) not null,
 	email nvarchar(50) not null,
@@ -15,28 +15,21 @@ create table Users (
 );
 go
 
-create table Courses (
-	course_id int primary key identity,
-	course_name nvarchar(100)  not null,
-	teacher_id int foreign key references Users(user_id)
-);
-go 
-
 create table Exams (
-	exam_id int primary key identity,
+	EID int primary key identity,
 	exam_name nvarchar(250) not null, 
-	course_id int foreign key references Courses(course_id),
 	start_time datetime,
 	end_time datetime,
-	teacher_id int foreign key references Users(user_id),
-	time_limit int
+	TID int foreign key references Users(UID),
+	time_limit int not null,
+	attempt int not null,
+	status nvarchar(100) not null
 );
 go 
 
 create table Questions (
-	question_id int primary key identity,
-	exam_id int foreign key references Exams(exam_id),
-	course_id int foreign key references Courses(course_id),
+	QID int primary key identity,
+	EID int foreign key references Exams(EID),
 	QuestionText nvarchar(max) not null,
 	Option1 nvarchar(100) not null,
 	Option2 nvarchar(100) not null,
@@ -49,63 +42,52 @@ go
 
 create table StudentAnswers (
 	ID int primary key identity,
-	student_id int foreign key references Users(user_id),
-	EID int foreign key references Exams(exam_id),
-	QID int foreign key references Questions(question_id),
-	SelectedOption nvarchar(100),
-	MarkObtained float not null, 
+	student_id int foreign key references Users(UID),
+	EID int foreign key references Exams(EID),
+	QID int foreign key references Questions(QID),
+	Selected nvarchar(100),
+	MarkObtained float not null,
+	Submission datetime
 );
 go
 
--- assign exam to student
-create table assignment (
-	assignment_id int primary key identity,
-	exam_id int foreign key references Exams(exam_id),
-	student_id int foreign key references Users(user_id)
+create table Report (
+	ID int primary key identity, 
+	student_id int foreign key references Users(UID),
+	EID int foreign key references Exams(EID),
+	Total_score float not null,
+	Submission datetime not null,
+	Feedback nvarchar(MAX)
 );
-go 
+go
 
 -- insert 3 teachers
-insert into Users (username, password, email, role) values
-('JohnB', 'john123', 'johnBeaty@gmail.com', 'teacher'), 
-('jane_smith', 'password456', 'jane.smith@example.com', 'teacher'),
-('alice_johnson', 'password789', 'alice.johnson@example.com', 'teacher'),
+insert into Users (username, password, email, role, profile_picture) values
+('JohnB', 'john123', 'johnBeaty@gmail.com', 'teacher', null), 
+('jane_smith', 'password456', 'jane.smith@example.com', 'teacher', NULL),
+('alice_johnson', 'password789', 'alice.johnson@example.com', 'teacher', NULL),
 -- insert 3 students
-('michael_brown', 'password123', 'michael.brown@example.com', 'student'),
-('emily_davis', 'password456', 'emily.davis@example.com', 'student'),
-('sarah_wilson', 'password789', 'sarah.wilson@example.com', 'student');
-
--- insert courses
-insert into Courses (course_name, teacher_id) values 
-('calculus', 1), 
-('computer science', 2), 
-('history', 3);
-
--- insert exams
-insert into Exams (exam_name, course_id, start_time, end_time, teacher_id, time_limit) values 
-('Quiz 1', 1, '23/5/2024', '23/5/2024', 1, 30),
-('Quiz 1', 2, '21/5/2024', '23/5/2024', 2, 15),
-('Quiz 1', 3, '19/5/2024', '25/5/2024', 3, 45);
+('michael_brown', 'password123', 'michael.brown@example.com', 'student', NULL),
+('emily_davis', 'password456', 'emily.davis@example.com', 'student', NULL),
+('sarah_wilson', 'password789', 'sarah.wilson@example.com', 'student', NULL);
+go 
 
 -- insert questions
-insert into Questions (exam_id, course_id, QuestionText, Option1, Option2,Option3, Option4, correct_answer, point) values
-(1, 1, 'What is the derivative of x^2?', 'x', '2x', 'x^2', '2', '2x', 1.0),
-(1, 1, 'Solve the equation: 2x + 3 = 7.', 'x = 1', 'x = 2', 'x = 3', 'x = 4', 'x = 2', 1.0),
+insert into Questions (EID, QuestionText, Option1, Option2,Option3, Option4, correct_answer, point) values
+(1, 'What is the derivative of x^2?', 'x', '2x', 'x^2', '2', '2x', 1.0),
+(1, 'Solve the equation: 2x + 3 = 7.', 'x = 1', 'x = 2', 'x = 3', 'x = 4', 'x = 2', 1.0),
 -- computer science
-(2, 2, 'What is the time complexity of binary search?', 'O(n)', 'O(log n)', 'O(n^2)', 'O(1)', 'O(log n)', 1.0),
-(2, 2, 'Explain the concept of object-oriented programming.', 'Encapsulation', 'Polymorphism', 'Inheritance', 'All of the above', 'All of the above', 1.0),
+(2, 'What is the time complexity of binary search?', 'O(n)', 'O(log n)', 'O(n^2)', 'O(1)', 'O(log n)', 1.0),
+(2, 'Explain the concept of object-oriented programming.', 'Encapsulation', 'Polymorphism', 'Inheritance', 'All of the above', 'All of the above', 1.0),
 -- history
-(3, 3, 'Who was the first President of the United States?', 'George Washington', 'Thomas Jefferson', 'John Adams', 'James Madison', 'George Washington', 1.0),
-(3, 3, 'What year did World War II end?', '1943', '1944', '1945', '1946', '1945', 1.0);
+(3, 'Who was the first President of the United States?', 'George Washington', 'Thomas Jefferson', 'John Adams', 'James Madison', 'George Washington', 1.0),
+(3, 'What year did World War II end?', '1943', '1944', '1945', '1946', '1945', 1.0);
+go
 
-insert into StudentAnswers (student_id, EID, QID, SelectedOption, MarkObtained) values
-(4, 1, 1, '2x', 1.0),
-(5, 2, 3, 'O(1)', 0.0),
-(6, 3, 5, 'George Washington', 1.0);
+insert into Exams values
+('Quiz 1', GETDATE(), DATEDIFF(day, getdate(), 3), 1, 30, 1, 'Upcoming'),
+('Quiz 2', GETDATE(), DATEDIFF(day, getdate(), 3), 2, 15, 1, 'Active'),
+('Quiz 3', GETDATE(), DATEDIFF(day, getdate(), 3), 3, 60, 2, 'Active');
+go
 
-insert into assignment (exam_id, student_id) values (1, 4), (2, 5), (3, 6);
-
-select username, password from Users where role = 'teacher';
-select * from Users
-select * from Users where user_id = 1;
-select * from Questions
+select * from Exams
