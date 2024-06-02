@@ -7,7 +7,7 @@ go
 -- identity: auto- increament --- tu dong tang 
 create table Users (
 	UID int primary key identity,
-	username nvarchar(50) not null,
+	username nvarchar(50) not null unique,
 	password nvarchar(50) not null,
 	email nvarchar(50) not null,
 	role nvarchar(10) not null,
@@ -23,14 +23,15 @@ create table Exams (
 	TID int foreign key references Users(UID),
 	time_limit int not null,
 	attempt int not null,
-	status nvarchar(100) not null
+	status nvarchar(100) not null,
+	unique (exam_name, TID)
 );
 go 
 
 create table Questions (
 	QID int primary key identity,
 	EID int foreign key references Exams(EID),
-	QuestionText nvarchar(max) not null,
+	QuestionText nvarchar(600) not null unique,
 	Option1 nvarchar(100) not null,
 	Option2 nvarchar(100) not null,
 	Option3 nvarchar(100) not null,
@@ -72,6 +73,12 @@ insert into Users (username, password, email, role, profile_picture) values
 ('sarah_wilson', 'password789', 'sarah.wilson@example.com', 'student', NULL);
 go 
 
+insert into Exams values
+('Quiz 1', GETDATE(), DATEDIFF(day, getdate(), 3), 1, 30, 1, 'Upcoming'),
+('Quiz 2', GETDATE(), DATEDIFF(day, getdate(), 3), 2, 15, 1, 'Active'),
+('Quiz 3', GETDATE(), DATEDIFF(day, getdate(), 3), 3, 60, 2, 'Active');
+go
+
 -- insert questions
 insert into Questions (EID, QuestionText, Option1, Option2,Option3, Option4, correct_answer, point) values
 (1, 'What is the derivative of x^2?', 'x', '2x', 'x^2', '2', '2x', 1.0),
@@ -82,12 +89,6 @@ insert into Questions (EID, QuestionText, Option1, Option2,Option3, Option4, cor
 -- history
 (3, 'Who was the first President of the United States?', 'George Washington', 'Thomas Jefferson', 'John Adams', 'James Madison', 'George Washington', 1.0),
 (3, 'What year did World War II end?', '1943', '1944', '1945', '1946', '1945', 1.0);
-go
-
-insert into Exams values
-('Quiz 1', GETDATE(), DATEDIFF(day, getdate(), 3), 1, 30, 1, 'Upcoming'),
-('Quiz 2', GETDATE(), DATEDIFF(day, getdate(), 3), 2, 15, 1, 'Active'),
-('Quiz 3', GETDATE(), DATEDIFF(day, getdate(), 3), 3, 60, 2, 'Active');
 go
 
 select * from Exams

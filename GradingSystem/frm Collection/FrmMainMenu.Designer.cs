@@ -33,10 +33,10 @@
             LogoutBtn = new FontAwesome.Sharp.IconButton();
             ContactBtn = new FontAwesome.Sharp.IconButton();
             ScoreBtn = new FontAwesome.Sharp.IconButton();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             ExamsBtn = new FontAwesome.Sharp.IconButton();
             DashboardBtn = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
             MainPanel = new Panel();
             MenuPanel.SuspendLayout();
             SuspendLayout();
@@ -53,7 +53,7 @@
             MenuPanel.Dock = DockStyle.Left;
             MenuPanel.Location = new Point(0, 0);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(214, 790);
+            MenuPanel.Size = new Size(214, 855);
             MenuPanel.TabIndex = 1;
             // 
             // LogoutBtn
@@ -69,7 +69,7 @@
             LogoutBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             LogoutBtn.IconSize = 35;
             LogoutBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            LogoutBtn.Location = new Point(0, 730);
+            LogoutBtn.Location = new Point(0, 795);
             LogoutBtn.Name = "LogoutBtn";
             LogoutBtn.Padding = new Padding(10, 0, 20, 0);
             LogoutBtn.Rotation = 180D;
@@ -94,7 +94,7 @@
             ContactBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ContactBtn.IconSize = 38;
             ContactBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            ContactBtn.Location = new Point(0, 384);
+            ContactBtn.Location = new Point(0, 423);
             ContactBtn.Name = "ContactBtn";
             ContactBtn.Padding = new Padding(10, 0, 20, 0);
             ContactBtn.Size = new Size(214, 60);
@@ -118,7 +118,7 @@
             ScoreBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ScoreBtn.IconSize = 40;
             ScoreBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            ScoreBtn.Location = new Point(0, 297);
+            ScoreBtn.Location = new Point(0, 336);
             ScoreBtn.Name = "ScoreBtn";
             ScoreBtn.Padding = new Padding(10, 0, 20, 0);
             ScoreBtn.Size = new Size(214, 60);
@@ -128,6 +128,31 @@
             ScoreBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             ScoreBtn.UseVisualStyleBackColor = false;
             ScoreBtn.Click += ScoreBtn_Click;
+            // 
+            // iconButton1
+            // 
+            iconButton1.AccessibleDescription = "Insert, view or delete questions in exams";
+            iconButton1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            iconButton1.BackColor = Color.FromArgb(255, 132, 0);
+            iconButton1.FlatAppearance.BorderSize = 0;
+            iconButton1.FlatStyle = FlatStyle.Flat;
+            iconButton1.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
+            iconButton1.ForeColor = Color.Black;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.FileCircleXmark;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.IconSize = 35;
+            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton1.Location = new Point(0, 165);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Padding = new Padding(10, 0, 20, 0);
+            iconButton1.Size = new Size(214, 60);
+            iconButton1.TabIndex = 12;
+            iconButton1.Text = "   Questions";
+            iconButton1.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += QuestionsBtn_Click;
             // 
             // ExamsBtn
             // 
@@ -143,7 +168,7 @@
             ExamsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ExamsBtn.IconSize = 35;
             ExamsBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            ExamsBtn.Location = new Point(0, 210);
+            ExamsBtn.Location = new Point(0, 249);
             ExamsBtn.Name = "ExamsBtn";
             ExamsBtn.Padding = new Padding(10, 0, 20, 0);
             ExamsBtn.Size = new Size(214, 60);
@@ -167,7 +192,7 @@
             DashboardBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             DashboardBtn.IconSize = 38;
             DashboardBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            DashboardBtn.Location = new Point(0, 36);
+            DashboardBtn.Location = new Point(0, 75);
             DashboardBtn.Name = "DashboardBtn";
             DashboardBtn.Padding = new Padding(10, 0, 20, 0);
             DashboardBtn.Size = new Size(214, 60);
@@ -183,50 +208,25 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(214, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1166, 43);
+            panel1.Size = new Size(1188, 43);
             panel1.TabIndex = 4;
             panel1.MouseDown += PanelMove_MouseDown;
             panel1.MouseMove += PanelMove_MouseMove;
             panel1.MouseUp += PanelMove_MouseUp;
             // 
-            // iconButton1
-            // 
-            iconButton1.AccessibleDescription = "Insert, view or delete questions in exams";
-            iconButton1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            iconButton1.BackColor = Color.FromArgb(255, 132, 0);
-            iconButton1.FlatAppearance.BorderSize = 0;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
-            iconButton1.ForeColor = Color.Black;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.FileCircleXmark;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 35;
-            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(0, 126);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Padding = new Padding(10, 0, 20, 0);
-            iconButton1.Size = new Size(214, 60);
-            iconButton1.TabIndex = 12;
-            iconButton1.Text = "   Questions";
-            iconButton1.TextAlign = ContentAlignment.MiddleLeft;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
-            iconButton1.Click += QuestionsBtn_Click;
-            // 
             // MainPanel
             // 
             MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(214, 36);
+            MainPanel.Location = new Point(214, 43);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1166, 754);
+            MainPanel.Size = new Size(1188, 812);
             MainPanel.TabIndex = 5;
             // 
             // frmMainMenu
             // 
             AutoScaleDimensions = new SizeF(11F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1380, 790);
+            ClientSize = new Size(1402, 855);
             Controls.Add(MainPanel);
             Controls.Add(panel1);
             Controls.Add(MenuPanel);
