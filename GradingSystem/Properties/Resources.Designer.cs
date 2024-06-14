@@ -63,16 +63,6 @@ namespace GradingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _220ba3f673e2855eb83d9bc86abbbc08 {
-            get {
-                object obj = ResourceManager.GetObject("220ba3f673e2855eb83d9bc86abbbc08", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _7309700 {
             get {
                 object obj = ResourceManager.GetObject("7309700", resourceCulture);
@@ -96,16 +86,6 @@ namespace GradingSystem.Properties {
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap original_2596441457977fa0ae1d0e9718a3e6e3 {
-            get {
-                object obj = ResourceManager.GetObject("original-2596441457977fa0ae1d0e9718a3e6e3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
