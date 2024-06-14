@@ -55,7 +55,7 @@
             MenuPanel.Dock = DockStyle.Left;
             MenuPanel.Location = new Point(0, 0);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(214, 650);
+            MenuPanel.Size = new Size(214, 760);
             MenuPanel.TabIndex = 1;
             // 
             // LogoutBtn
@@ -70,11 +70,11 @@
             LogoutBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             LogoutBtn.IconSize = 35;
             LogoutBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            LogoutBtn.Location = new Point(0, 590);
+            LogoutBtn.Location = new Point(0, 698);
             LogoutBtn.Name = "LogoutBtn";
             LogoutBtn.Padding = new Padding(10, 0, 20, 0);
             LogoutBtn.Rotation = 180D;
-            LogoutBtn.Size = new Size(214, 60);
+            LogoutBtn.Size = new Size(214, 62);
             LogoutBtn.TabIndex = 9;
             LogoutBtn.Text = "  Logout";
             LogoutBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -97,7 +97,7 @@
             ContactBtn.Location = new Point(0, 419);
             ContactBtn.Name = "ContactBtn";
             ContactBtn.Padding = new Padding(10, 0, 20, 0);
-            ContactBtn.Size = new Size(214, 60);
+            ContactBtn.Size = new Size(214, 62);
             ContactBtn.TabIndex = 8;
             ContactBtn.Text = "  Contact us";
             ContactBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -120,7 +120,7 @@
             ScoreBtn.Location = new Point(0, 332);
             ScoreBtn.Name = "ScoreBtn";
             ScoreBtn.Padding = new Padding(10, 0, 20, 0);
-            ScoreBtn.Size = new Size(214, 60);
+            ScoreBtn.Size = new Size(214, 62);
             ScoreBtn.TabIndex = 5;
             ScoreBtn.Text = "  Score";
             ScoreBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -144,7 +144,7 @@
             ExamsBtn.Location = new Point(0, 245);
             ExamsBtn.Name = "ExamsBtn";
             ExamsBtn.Padding = new Padding(10, 0, 20, 0);
-            ExamsBtn.Size = new Size(214, 60);
+            ExamsBtn.Size = new Size(214, 62);
             ExamsBtn.TabIndex = 3;
             ExamsBtn.Text = "   Exams";
             ExamsBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -167,7 +167,7 @@
             DashboardBtn.Location = new Point(0, 71);
             DashboardBtn.Name = "DashboardBtn";
             DashboardBtn.Padding = new Padding(10, 0, 20, 0);
-            DashboardBtn.Size = new Size(214, 60);
+            DashboardBtn.Size = new Size(214, 62);
             DashboardBtn.TabIndex = 2;
             DashboardBtn.Text = "  Dashboard";
             DashboardBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -190,7 +190,7 @@
             QuestionsBtn.Location = new Point(0, 158);
             QuestionsBtn.Name = "QuestionsBtn";
             QuestionsBtn.Padding = new Padding(10, 0, 20, 0);
-            QuestionsBtn.Size = new Size(214, 60);
+            QuestionsBtn.Size = new Size(214, 62);
             QuestionsBtn.TabIndex = 2;
             QuestionsBtn.Text = "  Questions";
             QuestionsBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -205,7 +205,7 @@
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(214, 43);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1025, 607);
+            MainPanel.Size = new Size(1025, 717);
             MainPanel.TabIndex = 3;
             // 
             // label1
@@ -229,7 +229,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1239, 650);
+            ClientSize = new Size(1239, 760);
             Controls.Add(MainPanel);
             Controls.Add(panel1);
             Controls.Add(MenuPanel);

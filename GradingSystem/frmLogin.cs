@@ -90,7 +90,6 @@ namespace GradingSystem
                     reader.Close();
                 }
             }
-
             return role;
         }
 
