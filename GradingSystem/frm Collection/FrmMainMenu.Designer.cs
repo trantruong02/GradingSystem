@@ -37,8 +37,14 @@
             DashboardBtn = new FontAwesome.Sharp.IconButton();
             QuestionsBtn = new FontAwesome.Sharp.IconButton();
             MainPanel = new Panel();
+            ListExam = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
             label1 = new Label();
-            panel1 = new Panel();
             MenuPanel.SuspendLayout();
             MainPanel.SuspendLayout();
             SuspendLayout();
@@ -201,37 +207,71 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.White;
+            MainPanel.Controls.Add(ListExam);
             MainPanel.Controls.Add(label1);
             MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(214, 43);
+            MainPanel.Location = new Point(214, 0);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1025, 607);
+            MainPanel.Size = new Size(1025, 650);
             MainPanel.TabIndex = 3;
+            // 
+            // ListExam
+            // 
+            ListExam.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
+            ListExam.FullRowSelect = true;
+            ListExam.Location = new Point(129, 149);
+            ListExam.Name = "ListExam";
+            ListExam.Size = new Size(736, 365);
+            ListExam.TabIndex = 1;
+            ListExam.UseCompatibleStateImageBehavior = false;
+            ListExam.View = View.Details;
+            ListExam.ColumnClick += ListExam_ColumnClick;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "ID";
+            columnHeader1.Width = 28;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Exam Name";
+            columnHeader2.Width = 120;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Start Time";
+            columnHeader3.Width = 200;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "End Time";
+            columnHeader4.Width = 200;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Teacher ID";
+            columnHeader5.Width = 88;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Time Limit";
+            columnHeader6.Width = 96;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(425, 162);
+            label1.Location = new Point(138, 121);
             label1.Name = "label1";
-            label1.Size = new Size(60, 20);
+            label1.Size = new Size(51, 19);
             label1.TabIndex = 0;
             label1.Text = "Menu";
             // 
-            // panel1
-            // 
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(214, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1025, 43);
-            panel1.TabIndex = 4;
-            // 
             // frmMainMenu
             // 
-            AutoScaleDimensions = new SizeF(11F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1239, 650);
             Controls.Add(MainPanel);
-            Controls.Add(panel1);
             Controls.Add(MenuPanel);
             Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
@@ -247,7 +287,6 @@
 
         #endregion
         private FlowLayoutPanel flowLayoutPanel1;
-        private Panel panel1;
         private Panel MenuPanel;
         private FontAwesome.Sharp.IconButton QuestionsBtn;
         private FontAwesome.Sharp.IconButton ScoreBtn;
@@ -257,5 +296,13 @@
         private FontAwesome.Sharp.IconButton DashboardBtn;
         private Panel MainPanel;
         private Label label1;
+        private ListView ListExam;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        //private GroupBox groupBox1;
     }
 }

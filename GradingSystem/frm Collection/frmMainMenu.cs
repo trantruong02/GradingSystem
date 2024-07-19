@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Azure.Core;
 using FontAwesome.Sharp;
+using GradingSystem.Class_collection;
+using Microsoft.Data.SqlClient;
 
 namespace GradingSystem.frm_Collection
 {
@@ -18,6 +22,9 @@ namespace GradingSystem.frm_Collection
         private Panel leftBorderBtn;
         bool drag = false;
         Point starting_point = new(0, 0);
+        string connectionString = "Data Source=JENLAP\\MSSQLSERVERNO;Initial Catalog=GradingSystem;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+
 
         public frmMainMenu()
         {
@@ -26,7 +33,7 @@ namespace GradingSystem.frm_Collection
             leftBorderBtn.Size = new(7, 60);
             MenuPanel.Controls.Add(leftBorderBtn);
 
-            this.MainPanel.Controls.Clear();
+            //this.MainPanel.Controls.Clear();
             frmDashboard Home = new()
             {
                 Dock = DockStyle.Fill,
@@ -36,6 +43,11 @@ namespace GradingSystem.frm_Collection
             Home.FormBorderStyle = FormBorderStyle.None;
             this.MainPanel.Controls.Add(Home);
             Home.Show();
+
+            ListViewColumnSorter lvwColumnSorter = new ListViewColumnSorter();
+            ListExam.ListViewItemSorter = lvwColumnSorter;
+            getTests();
+
         }
 
         // 255, 204, 112
@@ -97,6 +109,7 @@ namespace GradingSystem.frm_Collection
             frmDashboard.FormBorderStyle = FormBorderStyle.None;
             this.MainPanel.Controls.Add(frmDashboard);
             frmDashboard.Show();
+
         }
 
         private void LogoutBtn_Click(object sender, EventArgs e)
@@ -198,5 +211,82 @@ namespace GradingSystem.frm_Collection
         {
             drag = false;
         }
+
+
+        private void getTests()
+        {
+
+            ListExam.Items.Clear();
+            
+            using (SqlConnection connection = new(connectionString))
+            {
+                connection.Open();
+                string query = "select * from Exams";
+                using (SqlCommand command = new(query, connection))
+                {
+                    using (SqlDataReader oReader = command.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            System.Windows.Forms.ListViewItem test = new System.Windows.Forms.ListViewItem(oReader["exam_id"].ToString());
+
+                            test.SubItems.Add(oReader["exam_name"].ToString());
+                            //label1.Text = oReader["exam_name"].ToString();
+                            test.SubItems.Add(oReader["start_time"].ToString());
+                            test.SubItems.Add(oReader["end_time"].ToString());
+                            test.SubItems.Add(oReader["teacher_id"].ToString());
+                            test.SubItems.Add(oReader["time_limit"].ToString());
+
+                            ListExam.Items.Add(test);
+                        }
+                    }
+                }
+
+                connection.Close();
+
+            }
+
+
+
+
+
+        }
+
+        public void ListExam_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (ListExam.ListViewItemSorter == null) return;
+
+            ListViewColumnSorter lvwColumnSorter = (ListViewColumnSorter)ListExam.ListViewItemSorter;
+
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == System.Windows.Forms.SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = System.Windows.Forms.SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = System.Windows.Forms.SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = System.Windows.Forms.SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            ListExam.Sort();
+        }
+
+
+
+
+
+
+
     }
 }
