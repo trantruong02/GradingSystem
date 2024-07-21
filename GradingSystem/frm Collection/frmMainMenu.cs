@@ -23,7 +23,7 @@ namespace GradingSystem.frm_Collection
         {
             InitializeComponent();
             leftBorderBtn = new();
-            leftBorderBtn.Size = new(7, 60);
+            leftBorderBtn.Size = new(7, 62);
             MenuPanel.Controls.Add(leftBorderBtn);
 
             this.MainPanel.Controls.Clear();
@@ -42,12 +42,9 @@ namespace GradingSystem.frm_Collection
         // mau nen: 255, 250, 221
         private struct RGBColors
         {
-            public static Color color1 = Color.FromArgb(90, 178, 255);
+            public static Color color1 = Color.FromArgb(34, 102, 141);
             public static Color color2 = Color.FromArgb(132, 55, 173); // tim sang 
             public static Color color3 = Color.FromArgb(202, 244, 255);
-            public static Color color4 = Color.FromArgb(205, 232, 229);
-            public static Color color5 = Color.FromArgb(122, 178, 178);
-            public static Color color6 = Color.FromArgb(77, 134, 156);
         }
 
         private void ActiveButton(object sender, Color color)
@@ -57,10 +54,10 @@ namespace GradingSystem.frm_Collection
                 DisableButton();
                 // button
                 currentBtn = (IconButton)sender;
-                currentBtn.BackColor = Color.White;
-                currentBtn.ForeColor = Color.Black;
+                currentBtn.BackColor = Color.FromArgb(34, 102, 141);
+                currentBtn.ForeColor = Color.White;
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
-                currentBtn.IconColor = Color.Black;
+                currentBtn.IconColor = Color.White;
                 currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
                 // left border button
@@ -75,8 +72,8 @@ namespace GradingSystem.frm_Collection
         {
             if (currentBtn != null)
             {
-                currentBtn.BackColor = Color.FromArgb(34, 102, 141);
-                currentBtn.ForeColor = Color.White;
+                currentBtn.BackColor = Color.FromArgb(255, 132, 0);
+                currentBtn.ForeColor = Color.Black;
                 currentBtn.TextAlign = ContentAlignment.MiddleLeft;
                 currentBtn.IconColor = Color.Black;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -123,12 +120,13 @@ namespace GradingSystem.frm_Collection
             frmQues.FormBorderStyle = FormBorderStyle.None;
             this.MainPanel.Controls.Add(frmQues);
             frmQues.Show();
-
+            frmQues.LstQuestion.Items.Clear();
+            frmQues.LoadQuestion();
         }
 
         private void ExamsBtn_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, RGBColors.color2);
+            ActiveButton(sender, RGBColors.color1);
 
             this.MainPanel.Controls.Clear();
             FrmExams frmExams = new()
@@ -144,7 +142,7 @@ namespace GradingSystem.frm_Collection
 
         private void ScoreBtn_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, RGBColors.color5);
+            ActiveButton(sender, RGBColors.color1);
             this.MainPanel.Controls.Clear();
             FrmExams frmExams = new()
             {
@@ -159,7 +157,7 @@ namespace GradingSystem.frm_Collection
 
         private void ContactBtn_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, RGBColors.color4);
+            ActiveButton(sender, RGBColors.color1);
             this.MainPanel.Controls.Clear();
             FrmExams frmExams = new()
             {

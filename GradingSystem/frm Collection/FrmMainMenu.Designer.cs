@@ -37,15 +37,13 @@
             DashboardBtn = new FontAwesome.Sharp.IconButton();
             QuestionsBtn = new FontAwesome.Sharp.IconButton();
             MainPanel = new Panel();
-            label1 = new Label();
             panel1 = new Panel();
             MenuPanel.SuspendLayout();
-            MainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MenuPanel
             // 
-            MenuPanel.BackColor = Color.FromArgb(34, 102, 141);
+            MenuPanel.BackColor = Color.FromArgb(255, 132, 0);
             MenuPanel.Controls.Add(LogoutBtn);
             MenuPanel.Controls.Add(ContactBtn);
             MenuPanel.Controls.Add(ScoreBtn);
@@ -64,9 +62,9 @@
             LogoutBtn.FlatAppearance.BorderSize = 0;
             LogoutBtn.FlatStyle = FlatStyle.Flat;
             LogoutBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
-            LogoutBtn.ForeColor = Color.FromArgb(255, 250, 221);
+            LogoutBtn.ForeColor = Color.Black;
             LogoutBtn.IconChar = FontAwesome.Sharp.IconChar.SignOut;
-            LogoutBtn.IconColor = Color.FromArgb(255, 250, 221);
+            LogoutBtn.IconColor = Color.Black;
             LogoutBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             LogoutBtn.IconSize = 35;
             LogoutBtn.ImageAlign = ContentAlignment.MiddleLeft;
@@ -88,9 +86,9 @@
             ContactBtn.FlatAppearance.BorderSize = 0;
             ContactBtn.FlatStyle = FlatStyle.Flat;
             ContactBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
-            ContactBtn.ForeColor = Color.FromArgb(255, 250, 221);
+            ContactBtn.ForeColor = Color.Black;
             ContactBtn.IconChar = FontAwesome.Sharp.IconChar.ContactBook;
-            ContactBtn.IconColor = Color.FromArgb(255, 250, 221);
+            ContactBtn.IconColor = Color.Black;
             ContactBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ContactBtn.IconSize = 38;
             ContactBtn.ImageAlign = ContentAlignment.MiddleLeft;
@@ -111,9 +109,9 @@
             ScoreBtn.FlatAppearance.BorderSize = 0;
             ScoreBtn.FlatStyle = FlatStyle.Flat;
             ScoreBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
-            ScoreBtn.ForeColor = Color.FromArgb(255, 250, 221);
+            ScoreBtn.ForeColor = Color.Black;
             ScoreBtn.IconChar = FontAwesome.Sharp.IconChar.Star;
-            ScoreBtn.IconColor = Color.FromArgb(255, 250, 221);
+            ScoreBtn.IconColor = Color.Black;
             ScoreBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ScoreBtn.IconSize = 40;
             ScoreBtn.ImageAlign = ContentAlignment.MiddleLeft;
@@ -135,9 +133,9 @@
             ExamsBtn.FlatAppearance.BorderSize = 0;
             ExamsBtn.FlatStyle = FlatStyle.Flat;
             ExamsBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
-            ExamsBtn.ForeColor = Color.FromArgb(255, 250, 221);
+            ExamsBtn.ForeColor = Color.Black;
             ExamsBtn.IconChar = FontAwesome.Sharp.IconChar.File;
-            ExamsBtn.IconColor = Color.FromArgb(255, 250, 221);
+            ExamsBtn.IconColor = Color.Black;
             ExamsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ExamsBtn.IconSize = 35;
             ExamsBtn.ImageAlign = ContentAlignment.MiddleLeft;
@@ -158,9 +156,9 @@
             DashboardBtn.FlatAppearance.BorderSize = 0;
             DashboardBtn.FlatStyle = FlatStyle.Flat;
             DashboardBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DashboardBtn.ForeColor = Color.FromArgb(255, 250, 221);
+            DashboardBtn.ForeColor = Color.Black;
             DashboardBtn.IconChar = FontAwesome.Sharp.IconChar.HomeLgAlt;
-            DashboardBtn.IconColor = Color.FromArgb(255, 250, 221);
+            DashboardBtn.IconColor = Color.Black;
             DashboardBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             DashboardBtn.IconSize = 38;
             DashboardBtn.ImageAlign = ContentAlignment.MiddleLeft;
@@ -181,9 +179,9 @@
             QuestionsBtn.FlatAppearance.BorderSize = 0;
             QuestionsBtn.FlatStyle = FlatStyle.Flat;
             QuestionsBtn.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Bold);
-            QuestionsBtn.ForeColor = Color.FromArgb(255, 250, 221);
+            QuestionsBtn.ForeColor = Color.Black;
             QuestionsBtn.IconChar = FontAwesome.Sharp.IconChar.FileCirclePlus;
-            QuestionsBtn.IconColor = Color.FromArgb(255, 250, 221);
+            QuestionsBtn.IconColor = Color.Black;
             QuestionsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             QuestionsBtn.IconSize = 40;
             QuestionsBtn.ImageAlign = ContentAlignment.MiddleLeft;
@@ -201,21 +199,11 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.White;
-            MainPanel.Controls.Add(label1);
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(214, 43);
             MainPanel.Name = "MainPanel";
             MainPanel.Size = new Size(1025, 717);
             MainPanel.TabIndex = 3;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(425, 162);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Menu";
             // 
             // panel1
             // 
@@ -240,8 +228,6 @@
             Name = "frmMainMenu";
             StartPosition = FormStartPosition.CenterScreen;
             MenuPanel.ResumeLayout(false);
-            MainPanel.ResumeLayout(false);
-            MainPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -256,6 +242,5 @@
         private FontAwesome.Sharp.IconButton LogoutBtn;
         private FontAwesome.Sharp.IconButton DashboardBtn;
         private Panel MainPanel;
-        private Label label1;
     }
 }

@@ -49,6 +49,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             QuestionContent = new Guna.UI2.WinForms.Guna2TextBox();
             OptionA = new RadioButton();
             OptionB = new RadioButton();
@@ -61,15 +67,21 @@
             editButton = new Guna.UI2.WinForms.Guna2Button();
             previousPage = new Guna.UI2.WinForms.Guna2Button();
             saveButton = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             pointTxt = new Guna.UI2.WinForms.Guna2TextBox();
+            addButton = new Guna.UI2.WinForms.Guna2Button();
+            questionID = new Guna.UI2.WinForms.Guna2TextBox();
+            label1 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label4 = new Label();
+            examID = new Guna.UI2.WinForms.Guna2TextBox();
+            dorpdownExam = new Guna.UI2.WinForms.Guna2ComboBox();
             SuspendLayout();
             // 
             // QuestionContent
             // 
-            QuestionContent.AutoRoundedCorners = true;
-            QuestionContent.BorderColor = Color.DarkGray;
-            QuestionContent.BorderRadius = 29;
+            QuestionContent.BorderColor = Color.Gainsboro;
+            QuestionContent.BorderRadius = 20;
             QuestionContent.CustomizableEdges = customizableEdges1;
             QuestionContent.DefaultText = "";
             QuestionContent.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -80,58 +92,61 @@
             QuestionContent.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             QuestionContent.ForeColor = Color.DimGray;
             QuestionContent.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            QuestionContent.Location = new Point(59, 13);
+            QuestionContent.Location = new Point(49, 135);
             QuestionContent.Margin = new Padding(4);
             QuestionContent.Name = "QuestionContent";
             QuestionContent.PasswordChar = '\0';
-            QuestionContent.PlaceholderForeColor = Color.DimGray;
-            QuestionContent.PlaceholderText = "Content";
+            QuestionContent.PlaceholderForeColor = Color.Gainsboro;
+            QuestionContent.PlaceholderText = "";
             QuestionContent.ReadOnly = true;
-            QuestionContent.ScrollBars = ScrollBars.Horizontal;
             QuestionContent.SelectedText = "";
             QuestionContent.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            QuestionContent.Size = new Size(644, 60);
-            QuestionContent.TabIndex = 0;
+            QuestionContent.Size = new Size(726, 125);
+            QuestionContent.TabIndex = 3;
             // 
             // OptionA
             // 
             OptionA.AutoSize = true;
-            OptionA.Location = new Point(98, 106);
+            OptionA.Location = new Point(148, 289);
             OptionA.Name = "OptionA";
             OptionA.Size = new Size(17, 16);
-            OptionA.TabIndex = 1;
+            OptionA.TabIndex = 11;
             OptionA.TabStop = true;
             OptionA.UseVisualStyleBackColor = true;
+            OptionA.Visible = false;
             // 
             // OptionB
             // 
             OptionB.AutoSize = true;
-            OptionB.Location = new Point(97, 166);
+            OptionB.Location = new Point(147, 349);
             OptionB.Name = "OptionB";
             OptionB.Size = new Size(17, 16);
-            OptionB.TabIndex = 1;
+            OptionB.TabIndex = 10;
             OptionB.TabStop = true;
             OptionB.UseVisualStyleBackColor = true;
+            OptionB.Visible = false;
             // 
             // OptionC
             // 
             OptionC.AutoSize = true;
-            OptionC.Location = new Point(97, 222);
+            OptionC.Location = new Point(147, 405);
             OptionC.Name = "OptionC";
             OptionC.Size = new Size(17, 16);
-            OptionC.TabIndex = 1;
+            OptionC.TabIndex = 9;
             OptionC.TabStop = true;
             OptionC.UseVisualStyleBackColor = true;
+            OptionC.Visible = false;
             // 
             // OptionD
             // 
             OptionD.AutoSize = true;
-            OptionD.Location = new Point(96, 280);
+            OptionD.Location = new Point(146, 463);
             OptionD.Name = "OptionD";
             OptionD.Size = new Size(17, 16);
-            OptionD.TabIndex = 1;
+            OptionD.TabIndex = 8;
             OptionD.TabStop = true;
             OptionD.UseVisualStyleBackColor = true;
+            OptionD.Visible = false;
             // 
             // OptionATxt
             // 
@@ -148,7 +163,7 @@
             OptionATxt.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             OptionATxt.ForeColor = Color.DimGray;
             OptionATxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            OptionATxt.Location = new Point(122, 99);
+            OptionATxt.Location = new Point(172, 282);
             OptionATxt.Margin = new Padding(4);
             OptionATxt.Name = "OptionATxt";
             OptionATxt.PasswordChar = '\0';
@@ -158,7 +173,7 @@
             OptionATxt.SelectedText = "";
             OptionATxt.ShadowDecoration.CustomizableEdges = customizableEdges4;
             OptionATxt.Size = new Size(504, 31);
-            OptionATxt.TabIndex = 0;
+            OptionATxt.TabIndex = 4;
             // 
             // OptionBTxt
             // 
@@ -175,7 +190,7 @@
             OptionBTxt.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             OptionBTxt.ForeColor = Color.DimGray;
             OptionBTxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            OptionBTxt.Location = new Point(122, 159);
+            OptionBTxt.Location = new Point(172, 342);
             OptionBTxt.Margin = new Padding(4);
             OptionBTxt.Name = "OptionBTxt";
             OptionBTxt.PasswordChar = '\0';
@@ -185,7 +200,7 @@
             OptionBTxt.SelectedText = "";
             OptionBTxt.ShadowDecoration.CustomizableEdges = customizableEdges6;
             OptionBTxt.Size = new Size(504, 31);
-            OptionBTxt.TabIndex = 0;
+            OptionBTxt.TabIndex = 5;
             // 
             // OptionCTxt
             // 
@@ -202,7 +217,7 @@
             OptionCTxt.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             OptionCTxt.ForeColor = Color.DimGray;
             OptionCTxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            OptionCTxt.Location = new Point(122, 215);
+            OptionCTxt.Location = new Point(172, 398);
             OptionCTxt.Margin = new Padding(4);
             OptionCTxt.Name = "OptionCTxt";
             OptionCTxt.PasswordChar = '\0';
@@ -212,7 +227,7 @@
             OptionCTxt.SelectedText = "";
             OptionCTxt.ShadowDecoration.CustomizableEdges = customizableEdges8;
             OptionCTxt.Size = new Size(504, 31);
-            OptionCTxt.TabIndex = 0;
+            OptionCTxt.TabIndex = 6;
             // 
             // OptionDTxt
             // 
@@ -229,7 +244,7 @@
             OptionDTxt.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             OptionDTxt.ForeColor = Color.DimGray;
             OptionDTxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            OptionDTxt.Location = new Point(122, 273);
+            OptionDTxt.Location = new Point(172, 456);
             OptionDTxt.Margin = new Padding(4);
             OptionDTxt.Name = "OptionDTxt";
             OptionDTxt.PasswordChar = '\0';
@@ -239,7 +254,7 @@
             OptionDTxt.SelectedText = "";
             OptionDTxt.ShadowDecoration.CustomizableEdges = customizableEdges10;
             OptionDTxt.Size = new Size(504, 31);
-            OptionDTxt.TabIndex = 0;
+            OptionDTxt.TabIndex = 7;
             // 
             // editButton
             // 
@@ -261,11 +276,11 @@
             editButton.ImageAlign = HorizontalAlignment.Left;
             editButton.ImageOffset = new Point(6, 0);
             editButton.ImageSize = new Size(15, 15);
-            editButton.Location = new Point(609, 347);
+            editButton.Location = new Point(701, 572);
             editButton.Name = "editButton";
             editButton.ShadowDecoration.CustomizableEdges = customizableEdges12;
             editButton.Size = new Size(94, 32);
-            editButton.TabIndex = 11;
+            editButton.TabIndex = 12;
             editButton.Text = "Edit";
             editButton.TextAlign = HorizontalAlignment.Right;
             editButton.Click += editButton_Click;
@@ -285,12 +300,12 @@
             previousPage.ForeColor = Color.White;
             previousPage.Image = (Image)resources.GetObject("previousPage.Image");
             previousPage.ImageSize = new Size(35, 35);
-            previousPage.Location = new Point(12, 24);
+            previousPage.Location = new Point(12, 12);
             previousPage.Name = "previousPage";
             previousPage.PressedColor = Color.Transparent;
             previousPage.ShadowDecoration.CustomizableEdges = customizableEdges14;
             previousPage.Size = new Size(41, 36);
-            previousPage.TabIndex = 11;
+            previousPage.TabIndex = 13;
             previousPage.Click += previousPage_Click;
             // 
             // saveButton
@@ -313,50 +328,21 @@
             saveButton.ImageAlign = HorizontalAlignment.Left;
             saveButton.ImageOffset = new Point(6, 0);
             saveButton.ImageSize = new Size(18, 18);
-            saveButton.Location = new Point(609, 347);
+            saveButton.Location = new Point(701, 572);
             saveButton.Name = "saveButton";
             saveButton.ShadowDecoration.CustomizableEdges = customizableEdges16;
             saveButton.Size = new Size(94, 32);
             saveButton.TabIndex = 11;
             saveButton.Text = "Save";
             saveButton.TextAlign = HorizontalAlignment.Right;
-            // 
-            // guna2Button1
-            // 
-            guna2Button1.AnimatedGIF = true;
-            guna2Button1.AutoRoundedCorners = true;
-            guna2Button1.BackColor = Color.Transparent;
-            guna2Button1.BorderColor = Color.FromArgb(13, 127, 242);
-            guna2Button1.BorderRadius = 15;
-            guna2Button1.BorderThickness = 1;
-            guna2Button1.CustomizableEdges = customizableEdges17;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.Transparent;
-            guna2Button1.Font = new Font("Bookman Old Style", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2Button1.ForeColor = Color.Black;
-            guna2Button1.Image = (Image)resources.GetObject("guna2Button1.Image");
-            guna2Button1.ImageAlign = HorizontalAlignment.Left;
-            guna2Button1.ImageOffset = new Point(6, 0);
-            guna2Button1.ImageSize = new Size(18, 18);
-            guna2Button1.Location = new Point(509, 347);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.PressedColor = Color.Transparent;
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2Button1.Size = new Size(94, 32);
-            guna2Button1.TabIndex = 11;
-            guna2Button1.Text = "Add";
-            guna2Button1.TextAlign = HorizontalAlignment.Right;
-            guna2Button1.Click += editButton_Click;
+            saveButton.Click += saveButton_Click;
             // 
             // pointTxt
             // 
             pointTxt.AutoRoundedCorners = true;
             pointTxt.BorderColor = Color.LightGray;
             pointTxt.BorderRadius = 14;
-            pointTxt.CustomizableEdges = customizableEdges19;
+            pointTxt.CustomizableEdges = customizableEdges17;
             pointTxt.DefaultText = "";
             pointTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             pointTxt.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -366,7 +352,7 @@
             pointTxt.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pointTxt.ForeColor = Color.DimGray;
             pointTxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            pointTxt.Location = new Point(13, 348);
+            pointTxt.Location = new Point(705, 54);
             pointTxt.Margin = new Padding(4);
             pointTxt.Name = "pointTxt";
             pointTxt.PasswordChar = '\0';
@@ -374,22 +360,167 @@
             pointTxt.PlaceholderText = "Point";
             pointTxt.ReadOnly = true;
             pointTxt.SelectedText = "";
-            pointTxt.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            pointTxt.ShadowDecoration.CustomizableEdges = customizableEdges18;
             pointTxt.Size = new Size(90, 31);
-            pointTxt.TabIndex = 0;
+            pointTxt.TabIndex = 2;
+            // 
+            // addButton
+            // 
+            addButton.AnimatedGIF = true;
+            addButton.AutoRoundedCorners = true;
+            addButton.BackColor = Color.Transparent;
+            addButton.BorderColor = Color.FromArgb(13, 127, 242);
+            addButton.BorderRadius = 15;
+            addButton.BorderThickness = 1;
+            addButton.CustomizableEdges = customizableEdges19;
+            addButton.DisabledState.BorderColor = Color.DarkGray;
+            addButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            addButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            addButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            addButton.FillColor = Color.Transparent;
+            addButton.Font = new Font("Bookman Old Style", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            addButton.ForeColor = Color.Black;
+            addButton.Image = (Image)resources.GetObject("addButton.Image");
+            addButton.ImageAlign = HorizontalAlignment.Left;
+            addButton.ImageOffset = new Point(6, 0);
+            addButton.ImageSize = new Size(15, 15);
+            addButton.Location = new Point(701, 572);
+            addButton.Name = "addButton";
+            addButton.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            addButton.Size = new Size(94, 32);
+            addButton.TabIndex = 11;
+            addButton.Text = "Add";
+            addButton.TextAlign = HorizontalAlignment.Right;
+            addButton.Click += addButton_Click;
+            // 
+            // questionID
+            // 
+            questionID.AutoRoundedCorners = true;
+            questionID.BorderColor = Color.LightGray;
+            questionID.BorderRadius = 14;
+            questionID.CustomizableEdges = customizableEdges21;
+            questionID.DefaultText = "";
+            questionID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            questionID.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            questionID.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            questionID.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            questionID.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            questionID.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            questionID.ForeColor = Color.DimGray;
+            questionID.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            questionID.Location = new Point(172, 54);
+            questionID.Margin = new Padding(4);
+            questionID.Name = "questionID";
+            questionID.PasswordChar = '\0';
+            questionID.PlaceholderForeColor = Color.DimGray;
+            questionID.PlaceholderText = "ID";
+            questionID.ReadOnly = true;
+            questionID.SelectedText = "";
+            questionID.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            questionID.Size = new Size(90, 31);
+            questionID.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(49, 59);
+            label1.Name = "label1";
+            label1.Size = new Size(116, 20);
+            label1.TabIndex = 12;
+            label1.Text = "Question ID";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(644, 59);
+            label3.Name = "label3";
+            label3.Size = new Size(54, 20);
+            label3.TabIndex = 12;
+            label3.Text = "Point";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(333, 59);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 20);
+            label2.TabIndex = 12;
+            label2.Text = "Exam ID";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(49, 111);
+            label4.Name = "label4";
+            label4.Size = new Size(80, 20);
+            label4.TabIndex = 12;
+            label4.Text = "Content";
+            // 
+            // examID
+            // 
+            examID.AutoRoundedCorners = true;
+            examID.BorderColor = Color.LightGray;
+            examID.BorderRadius = 14;
+            examID.CustomizableEdges = customizableEdges23;
+            examID.DefaultText = "";
+            examID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            examID.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            examID.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            examID.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            examID.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            examID.Font = new Font("Bookman Old Style", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            examID.ForeColor = Color.DimGray;
+            examID.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            examID.Location = new Point(424, 54);
+            examID.Margin = new Padding(4);
+            examID.Name = "examID";
+            examID.PasswordChar = '\0';
+            examID.PlaceholderForeColor = Color.DimGray;
+            examID.PlaceholderText = "Exam ID";
+            examID.ReadOnly = true;
+            examID.SelectedText = "";
+            examID.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            examID.Size = new Size(100, 31);
+            examID.TabIndex = 1;
+            // 
+            // dorpdownExam
+            // 
+            dorpdownExam.BackColor = Color.Transparent;
+            dorpdownExam.BorderRadius = 16;
+            dorpdownExam.BorderThickness = 2;
+            dorpdownExam.CustomizableEdges = customizableEdges25;
+            dorpdownExam.DrawMode = DrawMode.OwnerDrawFixed;
+            dorpdownExam.DropDownStyle = ComboBoxStyle.DropDownList;
+            dorpdownExam.FocusedColor = Color.FromArgb(94, 148, 255);
+            dorpdownExam.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            dorpdownExam.Font = new Font("Segoe UI", 10F);
+            dorpdownExam.ForeColor = Color.FromArgb(68, 88, 112);
+            dorpdownExam.ItemHeight = 30;
+            dorpdownExam.Location = new Point(423, 54);
+            dorpdownExam.Name = "dorpdownExam";
+            dorpdownExam.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            dorpdownExam.Size = new Size(101, 36);
+            dorpdownExam.TabIndex = 14;
             // 
             // QuestionDetails
             // 
             AutoScaleDimensions = new SizeF(11F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(718, 391);
-            Controls.Add(previousPage);
-            Controls.Add(guna2Button1);
+            ClientSize = new Size(812, 616);
+            Controls.Add(dorpdownExam);
+            Controls.Add(label2);
+            Controls.Add(label3);
+            Controls.Add(label4);
+            Controls.Add(label1);
             Controls.Add(editButton);
+            Controls.Add(previousPage);
+            Controls.Add(addButton);
             Controls.Add(OptionD);
             Controls.Add(OptionC);
             Controls.Add(OptionB);
             Controls.Add(OptionA);
+            Controls.Add(examID);
+            Controls.Add(questionID);
             Controls.Add(pointTxt);
             Controls.Add(OptionDTxt);
             Controls.Add(OptionCTxt);
@@ -417,11 +548,17 @@
         public Guna.UI2.WinForms.Guna2TextBox pointTxt;
         public Guna.UI2.WinForms.Guna2Button editButton;
         public Guna.UI2.WinForms.Guna2Button saveButton;
-        public Guna.UI2.WinForms.Guna2TextBox examID;
         public RadioButton OptionA;
         public RadioButton OptionB;
         public RadioButton OptionC;
         public RadioButton OptionD;
-        public Guna.UI2.WinForms.Guna2Button guna2Button1;
+        public Guna.UI2.WinForms.Guna2Button addButton;
+        public Guna.UI2.WinForms.Guna2TextBox questionID;
+        private Label label3;
+        private Label label2;
+        private Label label4;
+        public Label label1;
+        public Guna.UI2.WinForms.Guna2TextBox examID;
+        private Guna.UI2.WinForms.Guna2ComboBox dorpdownExam;
     }
 }

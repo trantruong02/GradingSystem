@@ -35,8 +35,7 @@ create table Questions (
 	Option3 nvarchar(100) not null,
 	Option4 nvarchar(100) not null,
 	correct_answer nvarchar(100) not null,
-	point float not null, 
-    constraint UQ_QuestionText unique (QuestionText)
+	point float not null
 );
 go 
 
@@ -82,4 +81,4 @@ insert into StudentAnswers (student_id, EID, QID, SelectedOption, MarkObtained) 
 (5, 2, 3, 'O(1)', 0.0),
 (6, 3, 5, 'George Washington', 1.0);
 select * from Questions
-
+DELETE FROM Questions WHERE question_id = 7;

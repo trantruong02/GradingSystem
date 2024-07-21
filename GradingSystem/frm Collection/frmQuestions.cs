@@ -1,4 +1,5 @@
-﻿using GradingSystem.frm_Collection;
+﻿using GradingSystem.Class_collection;
+using GradingSystem.frm_Collection;
 using Guna.UI2.WinForms;
 using Microsoft.Data.SqlClient;
 using System;
@@ -6,22 +7,29 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Forms;
+using static System.Windows.Forms.Design.AxImporter;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 
 namespace GradingSystem
 {
     public partial class FrmQuestion : Form
     {
+        private int click = 0;
         public FrmQuestion()
         {
             InitializeComponent();
         }
+
 
         private void FrmQuestion_Load(object sender, EventArgs e)
         {
@@ -40,9 +48,9 @@ namespace GradingSystem
             LoadQuestion();
         }
 
-        private void LoadQuestion()
+        public void LoadQuestion()
         {
-            SqlConnection connection = new("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True");
+            SqlConnection connection = new(Config.ConnectionString);
             connection.Open();
             SqlCommand cmd = new("select * from Questions", connection);
             SqlDataReader da;
@@ -62,98 +70,199 @@ namespace GradingSystem
             connection.Close();
         }
 
-        private static bool IsTextboxEmpty(Guna2TextBox textBox)
+        private static int questionCount()
         {
-            return string.IsNullOrEmpty(textBox.Text);
-        }
+            int count = 0;
+            string query = "SELECT COUNT(question_id) FROM Questions";
 
-        private bool CheckandChange(Guna2TextBox textBox)
-        {
-            if (IsTextboxEmpty(textBox))
+            try
             {
-                ChangeBorder(textBox);
-                return true;
+                using (SqlConnection connection = new(Config.ConnectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new(query, connection))
+                    {
+                        // Use ExecuteScalar for single value result
+                        count = (int)command.ExecuteScalar();
+                    }
+                }
             }
-            return false;
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+
+            return count;
         }
 
-        private static void ChangeBorder(Guna2TextBox textBox)
-        {
-            textBox.BorderColor = Color.FromArgb(243, 36, 36);
-        }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             QuestionDetails create = new();
-            string content = create.QuestionContent.Text;
-            string optionA = create.OptionATxt.Text;
-            string optionB = create.OptionBTxt.Text;
-            string optionC = create.OptionCTxt.Text;
-            string optionD = create.OptionDTxt.Text;
-            float point = float.Parse(create.pointTxt.Text);
-            bool isAnyTextboxEmpty = false;
+            create.addButton.BringToFront();
+            create.label1.Visible = false;
+            create.questionID.Visible = false;
+            create.examID.ReadOnly = false;
+            create.pointTxt.ReadOnly = false;
+            create.QuestionContent.ReadOnly = false;
+            create.OptionATxt.ReadOnly = false;
+            create.OptionBTxt.ReadOnly = false;
+            create.OptionCTxt.ReadOnly = false;
+            create.OptionDTxt.ReadOnly = false;
+            create.OptionA.Visible = true;
+            create.OptionB.Visible = true;
+            create.OptionC.Visible = true;
+            create.OptionD.Visible = true;
+            create.Show();
+        }
 
-            isAnyTextboxEmpty |= CheckandChange(create.QuestionContent);
-            isAnyTextboxEmpty |= CheckandChange(create.OptionATxt);
-            isAnyTextboxEmpty |= CheckandChange(create.OptionBTxt);
-            isAnyTextboxEmpty |= CheckandChange(create.OptionCTxt);
-            isAnyTextboxEmpty |= CheckandChange(create.OptionDTxt);
-            isAnyTextboxEmpty |= CheckandChange(create.pointTxt);
-
-            if (isAnyTextboxEmpty) { return; }
-
-            using (SqlConnection con = new("Data Source=TRANTRUONG;Initial Catalog=GradingSystem;Integrated Security=True;Trust Server Certificate=True"))
+        private void CheckAnswer(Guna2TextBox guna, string answer)
+        {
+            int result = guna.Text.CompareTo(answer);
+            if (result == 0)
             {
-                con.Open();
-                string query = " insert into Questions (exam_id, QuestionText, Option1, Option2,Option3, Option4, correct_answer, point) values (@examID, @content, @option1, @option2, @option3, @option4, @answer, @point)";
-
-                using (SqlCommand cmd = new(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@examID", examID);
-                    cmd.Parameters.AddWithValue("@content", content);
-                    cmd.Parameters.AddWithValue("@option1", optionA);
-                    cmd.Parameters.AddWithValue("@option2", optionB);
-                    cmd.Parameters.AddWithValue("@option3", optionC);
-                    cmd.Parameters.AddWithValue("@option4", optionD);                    
-                    cmd.Parameters.AddWithValue("@point", point);
-
-                    // thuc thi truy van 
-                    int result = cmd.ExecuteNonQuery();
-
-                    if (result == 1)
-                    {
-                        MessageBox.Show("Added");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed");
-                    }
-                }
+                guna.BorderColor = Color.FromName("DarkGray");
+                guna.FillColor = Color.FromArgb(177, 175, 255);
             }
         }
 
         private void LstQuestion_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             QuestionDetails details = new();
+            details.questionID.Text = LstQuestion.SelectedItems[0].Text;
+            details.examID.Text = LstQuestion.SelectedItems[0].SubItems[1].Text;
             details.QuestionContent.Text = LstQuestion.SelectedItems[0].SubItems[2].Text;
             details.OptionATxt.Text = LstQuestion.SelectedItems[0].SubItems[3].Text;
             details.OptionBTxt.Text = LstQuestion.SelectedItems[0].SubItems[4].Text;
             details.OptionCTxt.Text = LstQuestion.SelectedItems[0].SubItems[5].Text;
             details.OptionDTxt.Text = LstQuestion.SelectedItems[0].SubItems[6].Text;
-            details.OptionATxt.Text = LstQuestion.SelectedItems[0].SubItems[7].Text;
+            string answer = LstQuestion.SelectedItems[0].SubItems[7].Text;
             details.pointTxt.Text = LstQuestion.SelectedItems[0].SubItems[8].Text;
+
+            CheckAnswer(details.OptionATxt, answer);
+            CheckAnswer(details.OptionBTxt, answer);
+            CheckAnswer(details.OptionCTxt, answer);
+            CheckAnswer(details.OptionDTxt, answer);
             details.Show();
-            
         }
 
         private void LstQuestion_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 var focusedItem = LstQuestion.FocusedItem;
                 if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
                 {
                     contextMenuStrip1.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void Delete()
+        {
+            SqlConnection conn = new(Config.ConnectionString);
+            conn.Open();
+            string query = "delete Questions where question_id = @id";
+            SqlCommand cmd = new(query, conn);
+            cmd.Parameters.AddWithValue("@id", int.Parse(searchBox.Text));
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            string data = searchBox.Text;
+
+            UpdateListView(data);
+        }
+
+        private void UpdateListView(string data)
+        {
+            // Clear the existing items in the ListView
+            LstQuestion.Items.Clear();
+
+            // Query the database
+            using (SqlConnection conn = new(Config.ConnectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM Questions WHERE QuestionText LIKE @searchText";
+
+                using (SqlCommand cmd = new(query, conn))
+                {
+                    // Use parameterized query to prevent SQL injection
+                    cmd.Parameters.AddWithValue("@searchText", "%" + data + "%");
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Create a ListViewItem and add it to the ListView
+                            System.Windows.Forms.ListViewItem item = new(reader["question_id"].ToString());
+                            item.SubItems.Add(reader["exam_id"].ToString());
+                            item.SubItems.Add(reader["QuestionText"].ToString());
+                            item.SubItems.Add(reader["Option1"].ToString());
+                            item.SubItems.Add(reader["Option2"].ToString());
+                            item.SubItems.Add(reader["Option3"].ToString());
+                            item.SubItems.Add(reader["Option4"].ToString());
+                            item.SubItems.Add(reader["correct_answer"].ToString());
+                            item.SubItems.Add(reader["point"].ToString());
+
+                            LstQuestion.Items.Add(item);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void sortBtn_Click(object sender, EventArgs e)
+        {
+
+            click++;
+            switch (click)
+            {
+                case 1:
+                    sortData("ASC");
+                    break;
+                case 2:
+                    sortData("DESC");
+                    click = 0;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void sortData(string types)
+        {
+            LstQuestion.Items.Clear();
+
+            // Query the database
+            using (SqlConnection conn = new(Config.ConnectionString))
+            {
+                conn.Open();
+                string query = $"select * from Questions order by (QuestionText) {types}";
+
+                using (SqlCommand cmd = new(query, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Create a ListViewItem and add it to the ListView
+                            System.Windows.Forms.ListViewItem item = new(reader["question_id"].ToString());
+                            item.SubItems.Add(reader["exam_id"].ToString());
+                            item.SubItems.Add(reader["QuestionText"].ToString());
+                            item.SubItems.Add(reader["Option1"].ToString());
+                            item.SubItems.Add(reader["Option2"].ToString());
+                            item.SubItems.Add(reader["Option3"].ToString());
+                            item.SubItems.Add(reader["Option4"].ToString());
+                            item.SubItems.Add(reader["correct_answer"].ToString());
+                            item.SubItems.Add(reader["point"].ToString());
+
+                            LstQuestion.Items.Add(item);
+                        }
+                    }
                 }
             }
         }
