@@ -414,13 +414,14 @@
         public Guna.UI2.WinForms.Guna2TextBox OptionCTxt;
         public Guna.UI2.WinForms.Guna2TextBox OptionDTxt;
         private Guna.UI2.WinForms.Guna2Button previousPage;
-        private RadioButton OptionA;
-        private RadioButton OptionB;
-        private RadioButton OptionC;
-        private RadioButton OptionD;
         public Guna.UI2.WinForms.Guna2TextBox pointTxt;
         public Guna.UI2.WinForms.Guna2Button editButton;
         public Guna.UI2.WinForms.Guna2Button saveButton;
+        public Guna.UI2.WinForms.Guna2TextBox examID;
+        public RadioButton OptionA;
+        public RadioButton OptionB;
+        public RadioButton OptionC;
+        public RadioButton OptionD;
         public Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

@@ -55,40 +55,6 @@
             LstQuestion.MouseClick += LstQuestion_MouseClick;
             LstQuestion.MouseDoubleClick += LstQuestion_MouseDoubleClick;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.DarkGray;
-            label1.Location = new Point(13, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(78, 20);
-            label1.TabIndex = 8;
-            label1.Text = "Created";
-            // 
-            // guna2Panel1
-            // 
-            guna2Panel1.AutoRoundedCorners = true;
-            guna2Panel1.BorderRadius = 50;
-            guna2Panel1.Controls.Add(label2);
-            guna2Panel1.Controls.Add(label1);
-            guna2Panel1.CustomizableEdges = customizableEdges1;
-            guna2Panel1.Location = new Point(12, 12);
-            guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Panel1.Size = new Size(312, 102);
-            guna2Panel1.TabIndex = 9;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Bookman Old Style", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(13, 49);
-            label2.Name = "label2";
-            label2.Size = new Size(39, 41);
-            label2.TabIndex = 8;
-            label2.Text = "0";
-            // 
             // AddButton
             // 
             AddButton.BackColor = Color.Transparent;
