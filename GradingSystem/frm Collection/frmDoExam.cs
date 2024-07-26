@@ -184,7 +184,15 @@ namespace GradingSystem
                             return false;
                         }
 
-                        examTimeLimit = TimeSpan.Parse(reader["time_limit"].ToString() ?? "");
+                        //examTimeLimit = TimeSpan.Parse(reader["time_limit"].ToString() ?? "");
+                        int timeLimit_minutes = int.Parse(reader["time_limit_int"].ToString() ?? "0");
+                        if (timeLimit_minutes > 0)
+                            examTimeLimit = TimeSpan.FromMinutes(timeLimit_minutes);
+                        else
+                        {
+                            MessageBox.Show("Cannot enter exam: Exam time limit in minutes cannot be zero or lower", "Exam Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
                     }
                     reader.Close();
                 }
